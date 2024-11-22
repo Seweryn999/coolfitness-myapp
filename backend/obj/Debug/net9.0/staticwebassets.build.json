@@ -1,12 +1,1722 @@
 {
   "Version": 1,
-  "Hash": "N7qxhc9M+1QNtfzJGqsi8ULkGFultmEzonbEq/EKgV4=",
+  "Hash": "xwF5+tCJJFO41IK4dZ/w6+TfnyD0l/qR/g48uJOhWrE=",
   "Source": "backend",
   "BasePath": "_content/backend",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "backend\\wwwroot",
+      "Source": "backend",
+      "ContentRoot": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\0yulyb0yu6-837uea38st.gz",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "index#[.{fingerprint=837uea38st}]?.html.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\index.html",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "9ob8fqivd4",
+      "Integrity": "5xufMmfkwYX14vtILLlRYiGVHuDrpQXYntWUNTeqpek=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\j0jozzp8gw-au8urdfvi1.gz",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "components/Header#[.{fingerprint=au8urdfvi1}]?.jsx.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\components\\Header.jsx",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "x4q1fav2o5",
+      "Integrity": "b37ITB0bjAmEsp/CQH+mXcbJX+w55RifO/hi6Ry86ns=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\components\\Header.jsx"
+    },
+    {
+      "Identity": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\qhms1j8o4q-l2zog28nuy.gz",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "main#[.{fingerprint=l2zog28nuy}]?.jsx.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\main.jsx",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "dl40frp9yg",
+      "Integrity": "v11luxEITbabLw9gOHS+ypcybbOUzrl/AXEZXzHgl24=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\main.jsx"
+    },
+    {
+      "Identity": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\tyyrsakji7-5mqj2wl6ye.gz",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "index#[.{fingerprint=5mqj2wl6ye}]?.js.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\index.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "n96gengdrl",
+      "Integrity": "u00wRLbzILwhNm30hvEDKpekyVITIYMriTF+dG3tqzk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\index.js"
+    },
+    {
+      "Identity": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\vv6u20q9kr-i0uv5s6myd.gz",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "App#[.{fingerprint=i0uv5s6myd}]?.js.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\App.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "8wk1wwp7fb",
+      "Integrity": "+O9OZUgm99y1NWT/e6FanRFoKwiHBHlD0wauvKI59jo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\App.js"
+    },
+    {
+      "Identity": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\App.js",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "App#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "i0uv5s6myd",
+      "Integrity": "sp56DPwofFIHCIhlncKNrXkJu9L+gFkB8fYV4f9ii2o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\App.js"
+    },
+    {
+      "Identity": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\components\\Header.jsx",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "components/Header#[.{fingerprint}]?.jsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "au8urdfvi1",
+      "Integrity": "vniaWv9Nn5qORm+J584nnPE/XeMcgD8ySqy6mYJVV4g=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\components\\Header.jsx"
+    },
+    {
+      "Identity": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\index.html",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "index#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "837uea38st",
+      "Integrity": "nBpK4mqlOVLW0YArWiqmjJwhFSVb9ETMrGK8D9jnDKI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\index.js",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "index#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5mqj2wl6ye",
+      "Integrity": "fZ8BX46djkMXZY+93n6GVQdaMXZioUrcitVrwYz4yqk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.js"
+    },
+    {
+      "Identity": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\main.jsx",
+      "SourceId": "backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\",
+      "BasePath": "_content/backend",
+      "RelativePath": "main#[.{fingerprint}]?.jsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "l2zog28nuy",
+      "Integrity": "c6A46dQvktDGIuMvrvQhrlCn5bBpAPlkZJte998BGF0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\main.jsx"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "App.i0uv5s6myd.js",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\vv6u20q9kr-i0uv5s6myd.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.006944444444"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "143"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+O9OZUgm99y1NWT/e6FanRFoKwiHBHlD0wauvKI59jo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:29:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"sp56DPwofFIHCIhlncKNrXkJu9L+gFkB8fYV4f9ii2o=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "i0uv5s6myd"
+        },
+        {
+          "Name": "label",
+          "Value": "App.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sp56DPwofFIHCIhlncKNrXkJu9L+gFkB8fYV4f9ii2o="
+        }
+      ]
+    },
+    {
+      "Route": "App.i0uv5s6myd.js",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\App.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "157"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sp56DPwofFIHCIhlncKNrXkJu9L+gFkB8fYV4f9ii2o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:29:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "i0uv5s6myd"
+        },
+        {
+          "Name": "label",
+          "Value": "App.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sp56DPwofFIHCIhlncKNrXkJu9L+gFkB8fYV4f9ii2o="
+        }
+      ]
+    },
+    {
+      "Route": "App.i0uv5s6myd.js.gz",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\vv6u20q9kr-i0uv5s6myd.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "143"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+O9OZUgm99y1NWT/e6FanRFoKwiHBHlD0wauvKI59jo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:29:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "i0uv5s6myd"
+        },
+        {
+          "Name": "label",
+          "Value": "App.js.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+O9OZUgm99y1NWT/e6FanRFoKwiHBHlD0wauvKI59jo="
+        }
+      ]
+    },
+    {
+      "Route": "App.js",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\vv6u20q9kr-i0uv5s6myd.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.006944444444"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "143"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+O9OZUgm99y1NWT/e6FanRFoKwiHBHlD0wauvKI59jo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:29:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"sp56DPwofFIHCIhlncKNrXkJu9L+gFkB8fYV4f9ii2o=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-sp56DPwofFIHCIhlncKNrXkJu9L+gFkB8fYV4f9ii2o="
+        }
+      ]
+    },
+    {
+      "Route": "App.js",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\App.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "157"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sp56DPwofFIHCIhlncKNrXkJu9L+gFkB8fYV4f9ii2o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:29:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-sp56DPwofFIHCIhlncKNrXkJu9L+gFkB8fYV4f9ii2o="
+        }
+      ]
+    },
+    {
+      "Route": "App.js.gz",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\vv6u20q9kr-i0uv5s6myd.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "143"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+O9OZUgm99y1NWT/e6FanRFoKwiHBHlD0wauvKI59jo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:29:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+O9OZUgm99y1NWT/e6FanRFoKwiHBHlD0wauvKI59jo="
+        }
+      ]
+    },
+    {
+      "Route": "components/Header.au8urdfvi1.jsx",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\j0jozzp8gw-au8urdfvi1.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.005376344086"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "185"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"b37ITB0bjAmEsp/CQH+mXcbJX+w55RifO/hi6Ry86ns=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:34:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/jscript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"vniaWv9Nn5qORm+J584nnPE/XeMcgD8ySqy6mYJVV4g=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "au8urdfvi1"
+        },
+        {
+          "Name": "label",
+          "Value": "components/Header.jsx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-vniaWv9Nn5qORm+J584nnPE/XeMcgD8ySqy6mYJVV4g="
+        }
+      ]
+    },
+    {
+      "Route": "components/Header.au8urdfvi1.jsx",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\components\\Header.jsx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "232"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/jscript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vniaWv9Nn5qORm+J584nnPE/XeMcgD8ySqy6mYJVV4g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:34:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "au8urdfvi1"
+        },
+        {
+          "Name": "label",
+          "Value": "components/Header.jsx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-vniaWv9Nn5qORm+J584nnPE/XeMcgD8ySqy6mYJVV4g="
+        }
+      ]
+    },
+    {
+      "Route": "components/Header.au8urdfvi1.jsx.gz",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\j0jozzp8gw-au8urdfvi1.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "185"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/jscript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"b37ITB0bjAmEsp/CQH+mXcbJX+w55RifO/hi6Ry86ns=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:34:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "au8urdfvi1"
+        },
+        {
+          "Name": "label",
+          "Value": "components/Header.jsx.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-b37ITB0bjAmEsp/CQH+mXcbJX+w55RifO/hi6Ry86ns="
+        }
+      ]
+    },
+    {
+      "Route": "components/Header.jsx",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\j0jozzp8gw-au8urdfvi1.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.005376344086"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "185"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"b37ITB0bjAmEsp/CQH+mXcbJX+w55RifO/hi6Ry86ns=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:34:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/jscript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"vniaWv9Nn5qORm+J584nnPE/XeMcgD8ySqy6mYJVV4g=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-vniaWv9Nn5qORm+J584nnPE/XeMcgD8ySqy6mYJVV4g="
+        }
+      ]
+    },
+    {
+      "Route": "components/Header.jsx",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\components\\Header.jsx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "232"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/jscript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vniaWv9Nn5qORm+J584nnPE/XeMcgD8ySqy6mYJVV4g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:34:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-vniaWv9Nn5qORm+J584nnPE/XeMcgD8ySqy6mYJVV4g="
+        }
+      ]
+    },
+    {
+      "Route": "components/Header.jsx.gz",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\j0jozzp8gw-au8urdfvi1.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "185"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/jscript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"b37ITB0bjAmEsp/CQH+mXcbJX+w55RifO/hi6Ry86ns=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:34:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-b37ITB0bjAmEsp/CQH+mXcbJX+w55RifO/hi6Ry86ns="
+        }
+      ]
+    },
+    {
+      "Route": "index.5mqj2wl6ye.js",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\tyyrsakji7-5mqj2wl6ye.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.005235602094"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "190"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"u00wRLbzILwhNm30hvEDKpekyVITIYMriTF+dG3tqzk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:33:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"fZ8BX46djkMXZY+93n6GVQdaMXZioUrcitVrwYz4yqk=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5mqj2wl6ye"
+        },
+        {
+          "Name": "label",
+          "Value": "index.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fZ8BX46djkMXZY+93n6GVQdaMXZioUrcitVrwYz4yqk="
+        }
+      ]
+    },
+    {
+      "Route": "index.5mqj2wl6ye.js",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\index.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "256"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fZ8BX46djkMXZY+93n6GVQdaMXZioUrcitVrwYz4yqk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:33:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5mqj2wl6ye"
+        },
+        {
+          "Name": "label",
+          "Value": "index.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fZ8BX46djkMXZY+93n6GVQdaMXZioUrcitVrwYz4yqk="
+        }
+      ]
+    },
+    {
+      "Route": "index.5mqj2wl6ye.js.gz",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\tyyrsakji7-5mqj2wl6ye.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "190"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"u00wRLbzILwhNm30hvEDKpekyVITIYMriTF+dG3tqzk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:33:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5mqj2wl6ye"
+        },
+        {
+          "Name": "label",
+          "Value": "index.js.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-u00wRLbzILwhNm30hvEDKpekyVITIYMriTF+dG3tqzk="
+        }
+      ]
+    },
+    {
+      "Route": "index.837uea38st.html",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\0yulyb0yu6-837uea38st.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.003703703704"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "269"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5xufMmfkwYX14vtILLlRYiGVHuDrpQXYntWUNTeqpek=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:32:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"nBpK4mqlOVLW0YArWiqmjJwhFSVb9ETMrGK8D9jnDKI=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "837uea38st"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nBpK4mqlOVLW0YArWiqmjJwhFSVb9ETMrGK8D9jnDKI="
+        }
+      ]
+    },
+    {
+      "Route": "index.837uea38st.html",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "412"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nBpK4mqlOVLW0YArWiqmjJwhFSVb9ETMrGK8D9jnDKI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:32:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "837uea38st"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nBpK4mqlOVLW0YArWiqmjJwhFSVb9ETMrGK8D9jnDKI="
+        }
+      ]
+    },
+    {
+      "Route": "index.837uea38st.html.gz",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\0yulyb0yu6-837uea38st.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "269"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5xufMmfkwYX14vtILLlRYiGVHuDrpQXYntWUNTeqpek=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:32:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "837uea38st"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5xufMmfkwYX14vtILLlRYiGVHuDrpQXYntWUNTeqpek="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\0yulyb0yu6-837uea38st.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.003703703704"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "269"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5xufMmfkwYX14vtILLlRYiGVHuDrpQXYntWUNTeqpek=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:32:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"nBpK4mqlOVLW0YArWiqmjJwhFSVb9ETMrGK8D9jnDKI=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-nBpK4mqlOVLW0YArWiqmjJwhFSVb9ETMrGK8D9jnDKI="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "412"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nBpK4mqlOVLW0YArWiqmjJwhFSVb9ETMrGK8D9jnDKI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:32:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-nBpK4mqlOVLW0YArWiqmjJwhFSVb9ETMrGK8D9jnDKI="
+        }
+      ]
+    },
+    {
+      "Route": "index.html.gz",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\0yulyb0yu6-837uea38st.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "269"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5xufMmfkwYX14vtILLlRYiGVHuDrpQXYntWUNTeqpek=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:32:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5xufMmfkwYX14vtILLlRYiGVHuDrpQXYntWUNTeqpek="
+        }
+      ]
+    },
+    {
+      "Route": "index.js",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\tyyrsakji7-5mqj2wl6ye.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.005235602094"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "190"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"u00wRLbzILwhNm30hvEDKpekyVITIYMriTF+dG3tqzk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:33:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"fZ8BX46djkMXZY+93n6GVQdaMXZioUrcitVrwYz4yqk=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fZ8BX46djkMXZY+93n6GVQdaMXZioUrcitVrwYz4yqk="
+        }
+      ]
+    },
+    {
+      "Route": "index.js",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\index.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "256"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fZ8BX46djkMXZY+93n6GVQdaMXZioUrcitVrwYz4yqk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:33:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fZ8BX46djkMXZY+93n6GVQdaMXZioUrcitVrwYz4yqk="
+        }
+      ]
+    },
+    {
+      "Route": "index.js.gz",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\tyyrsakji7-5mqj2wl6ye.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "190"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"u00wRLbzILwhNm30hvEDKpekyVITIYMriTF+dG3tqzk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Nov 2024 12:33:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-u00wRLbzILwhNm30hvEDKpekyVITIYMriTF+dG3tqzk="
+        }
+      ]
+    },
+    {
+      "Route": "main.jsx",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\qhms1j8o4q-l2zog28nuy.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.007092198582"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "140"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"v11luxEITbabLw9gOHS+ypcybbOUzrl/AXEZXzHgl24=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 Aug 2024 12:24:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/jscript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"c6A46dQvktDGIuMvrvQhrlCn5bBpAPlkZJte998BGF0=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-c6A46dQvktDGIuMvrvQhrlCn5bBpAPlkZJte998BGF0="
+        }
+      ]
+    },
+    {
+      "Route": "main.jsx",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\main.jsx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "168"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/jscript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"c6A46dQvktDGIuMvrvQhrlCn5bBpAPlkZJte998BGF0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 Aug 2024 12:24:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-c6A46dQvktDGIuMvrvQhrlCn5bBpAPlkZJte998BGF0="
+        }
+      ]
+    },
+    {
+      "Route": "main.jsx.gz",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\qhms1j8o4q-l2zog28nuy.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "140"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/jscript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"v11luxEITbabLw9gOHS+ypcybbOUzrl/AXEZXzHgl24=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 Aug 2024 12:24:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-v11luxEITbabLw9gOHS+ypcybbOUzrl/AXEZXzHgl24="
+        }
+      ]
+    },
+    {
+      "Route": "main.l2zog28nuy.jsx",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\qhms1j8o4q-l2zog28nuy.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.007092198582"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "140"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"v11luxEITbabLw9gOHS+ypcybbOUzrl/AXEZXzHgl24=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 Aug 2024 12:24:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/jscript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"c6A46dQvktDGIuMvrvQhrlCn5bBpAPlkZJte998BGF0=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "l2zog28nuy"
+        },
+        {
+          "Name": "label",
+          "Value": "main.jsx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-c6A46dQvktDGIuMvrvQhrlCn5bBpAPlkZJte998BGF0="
+        }
+      ]
+    },
+    {
+      "Route": "main.l2zog28nuy.jsx",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\main.jsx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "168"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/jscript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"c6A46dQvktDGIuMvrvQhrlCn5bBpAPlkZJte998BGF0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 Aug 2024 12:24:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "l2zog28nuy"
+        },
+        {
+          "Name": "label",
+          "Value": "main.jsx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-c6A46dQvktDGIuMvrvQhrlCn5bBpAPlkZJte998BGF0="
+        }
+      ]
+    },
+    {
+      "Route": "main.l2zog28nuy.jsx.gz",
+      "AssetFile": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\Debug\\net9.0\\compressed\\qhms1j8o4q-l2zog28nuy.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "140"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/jscript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"v11luxEITbabLw9gOHS+ypcybbOUzrl/AXEZXzHgl24=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 Aug 2024 12:24:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "l2zog28nuy"
+        },
+        {
+          "Name": "label",
+          "Value": "main.jsx.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-v11luxEITbabLw9gOHS+ypcybbOUzrl/AXEZXzHgl24="
+        }
+      ]
+    }
+  ]
 }

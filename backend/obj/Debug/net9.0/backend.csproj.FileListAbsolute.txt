@@ -1,4 +1,3 @@
-C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\bin\Debug\net9.0\appsettings.json
 C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\bin\Debug\net9.0\backend.staticwebassets.endpoints.json
 C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\bin\Debug\net9.0\backend.exe
@@ -35,3 +34,9 @@ C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\obj\Debug\n
 C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\obj\Debug\net9.0\backend.pdb
 C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\obj\Debug\net9.0\backend.genruntimeconfig.cache
 C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\obj\Debug\net9.0\ref\backend.dll
+C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\bin\Debug\net9.0\backend.staticwebassets.runtime.json
+C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\obj\Debug\net9.0\compressed\vv6u20q9kr-i0uv5s6myd.gz
+C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\obj\Debug\net9.0\compressed\j0jozzp8gw-au8urdfvi1.gz
+C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\obj\Debug\net9.0\compressed\0yulyb0yu6-837uea38st.gz
+C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\obj\Debug\net9.0\compressed\tyyrsakji7-5mqj2wl6ye.gz
+C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\obj\Debug\net9.0\compressed\qhms1j8o4q-l2zog28nuy.gz
