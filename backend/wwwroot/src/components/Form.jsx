@@ -33,7 +33,56 @@ function Form() {
     setFormData({ ...formData, [name]: value });
   };
 
+  const validateFormData = (data) => {
+    if (!data.name || data.name.trim().length < 3) {
+      return "The name must contain at least 3 characters.";
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.email)) {
+      return "Please provide a valid email address.";
+    }
+
+    const phoneRegex = /^\d{9,}$/;
+    if (!phoneRegex.test(data.phoneNumber)) {
+      return "Please provide a valid phone number (at least 9 digits).";
+    }
+
+    const height = parseInt(data.height, 10);
+    if (isNaN(height) || height < 150 || height > 250) {
+      return "Height must be a number between 150-250 cm.";
+    }
+
+    const weight = parseInt(data.weight, 10);
+    if (isNaN(weight) || weight < 30 || weight > 300) {
+      return "Weight must be a number between 30-300 kg.";
+    }
+
+    const age = parseInt(data.age, 10);
+    if (isNaN(age) || age < 16 || age > 100) {
+      return "Age must be a number between 16-100 years.";
+    }
+
+    const gymExperience = parseInt(data.gymExperience, 10);
+    if (isNaN(gymExperience) || gymExperience < 0 || gymExperience > 600) {
+      return "Gym experience must be a number of months between 0-600.";
+    }
+
+    const allowedMuscleGroups = ["all", "legs", "upper body"];
+    if (!allowedMuscleGroups.includes(data.muscleGroups.trim().toLowerCase())) {
+      return "Please provide a valid muscle group (all, legs, upper body).";
+    }
+
+    return null;
+  };
+
   const handleSubmit = () => {
+    const validationError = validateFormData(formData);
+    if (validationError) {
+      setNotification(validationError);
+      return;
+    }
+
     const entriesRef = ref(database, "Entries");
     push(entriesRef, formData)
       .then(() => {
@@ -58,13 +107,13 @@ function Form() {
   return (
     <div>
       <p className="formparagraph">
-        Twój personalny trener stworzy plan treningowy specjalnie dla ciebie.
+        Your personal trainer will create a workout plan just for you.
       </p>
-      <p className="formtask">Wypełnij ankietę:</p>
+      <p className="formtask">Please fill out the form:</p>
       <input
         type="text"
         name="name"
-        placeholder="Imię"
+        placeholder="Name"
         value={formData.name}
         onChange={handleChange}
       />
@@ -80,7 +129,7 @@ function Form() {
       <input
         type="text"
         name="phoneNumber"
-        placeholder="Numer Telefonu"
+        placeholder="Phone Number"
         value={formData.phoneNumber}
         onChange={handleChange}
       />
@@ -88,7 +137,7 @@ function Form() {
       <input
         type="text"
         name="height"
-        placeholder="Wzrost"
+        placeholder="Height (cm)"
         value={formData.height}
         onChange={handleChange}
       />
@@ -96,7 +145,7 @@ function Form() {
       <input
         type="text"
         name="weight"
-        placeholder="Waga ciała"
+        placeholder="Weight (kg)"
         value={formData.weight}
         onChange={handleChange}
       />
@@ -104,7 +153,7 @@ function Form() {
       <input
         type="text"
         name="age"
-        placeholder="Wiek"
+        placeholder="Age"
         value={formData.age}
         onChange={handleChange}
       />
@@ -112,7 +161,7 @@ function Form() {
       <input
         type="text"
         name="gymExperience"
-        placeholder="Staż na siłowni (miesiące)"
+        placeholder="Gym Experience (months)"
         value={formData.gymExperience}
         onChange={handleChange}
       />
@@ -120,13 +169,12 @@ function Form() {
       <input
         type="text"
         name="muscleGroups"
-        placeholder="(all, leggs, upper body)"
+        placeholder="Muscle Groups (all, legs, upper body)"
         value={formData.muscleGroups}
         onChange={handleChange}
       />
       <p></p>
       <button onClick={handleSubmit}>Submit</button>
-      {/* Display notification */}
       {notification && (
         <p style={{ color: "green", marginTop: "10px" }}>{notification}</p>
       )}
