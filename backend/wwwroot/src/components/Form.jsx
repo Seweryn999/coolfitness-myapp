@@ -1,20 +1,24 @@
+// Import what we need
 import React, { useState } from "react";
 import { getDatabase, ref, push } from "firebase/database";
 import { initializeApp } from "firebase/app";
 
+// Firebase setup
 const firebaseConfig = {
   authDomain: "coolfitness-f1486.firebaseapp.com",
   databaseURL: "https://coolfitness-f1486-default-rtdb.firebaseio.com/",
   projectId: "coolfitness-f1486",
-  storageBucket: "coolfitness.appspot.com",
+  storageBucket: "coolfitness-f1486.appspot.com",
   messagingSenderId: "1061755816855",
-  appId: "YOUR_APP_ID",
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
+// This is our form component
 function Form() {
+  // Keeps track of what the user types
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -26,25 +30,26 @@ function Form() {
     muscleGroups: "",
   });
 
+  // Handles messages we show the user (like errors or success)
   const [notification, setNotification] = useState("");
 
+  // Update the form state when something is typed
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  // Make sure the data is valid before doing anything with it
   const validateFormData = (data) => {
     if (!data.name || data.name.trim().length < 3) {
       return "The name must contain at least 3 characters.";
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
       return "Please provide a valid email address.";
     }
 
-    const phoneRegex = /^\d{9,}$/;
-    if (!phoneRegex.test(data.phoneNumber)) {
+    if (!/^\d{9,}$/.test(data.phoneNumber)) {
       return "Please provide a valid phone number (at least 9 digits).";
     }
 
@@ -68,25 +73,30 @@ function Form() {
       return "Gym experience must be a number of months between 0-600.";
     }
 
-    const allowedMuscleGroups = ["all", "legs", "upper body"];
-    if (!allowedMuscleGroups.includes(data.muscleGroups.trim().toLowerCase())) {
+    if (
+      !["all", "legs", "upper body"].includes(
+        data.muscleGroups.trim().toLowerCase()
+      )
+    ) {
       return "Please provide a valid muscle group (all, legs, upper body).";
     }
 
-    return null;
+    return null; // Everything checks out
   };
 
+  // When the user submits the form
   const handleSubmit = () => {
     const validationError = validateFormData(formData);
     if (validationError) {
-      setNotification(validationError);
+      setNotification(validationError); // Show them what went wrong
       return;
     }
 
+    // Send the data to Firebase
     const entriesRef = ref(database, "Entries");
     push(entriesRef, formData)
       .then(() => {
-        setNotification("Thank you for signing up! We will be in touch soon.");
+        setNotification("Thank you for signing up! We’ll be in touch soon."); // All good
         setFormData({
           name: "",
           email: "",
@@ -96,14 +106,15 @@ function Form() {
           age: "",
           gymExperience: "",
           muscleGroups: "",
-        });
+        }); // Reset the form
       })
       .catch((error) => {
-        setNotification("Something went wrong. Please try again.");
-        console.error(error);
+        setNotification("Something went wrong. Please try again."); // Uh-oh
+        console.error(error); // Log the error for debugging
       });
   };
 
+  // The form UI
   return (
     <div>
       <p className="formparagraph">
