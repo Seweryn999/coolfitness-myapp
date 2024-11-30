@@ -1,24 +1,52 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\App.js",
-      "PackagePath": "staticwebassets\\App.js"
+      "Id": "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\wwwroot\\dist\\assets\\index-SMWLTHKa.js",
+      "PackagePath": "staticwebassets\\dist\\assets\\index-SMWLTHKa.js"
     },
     {
-      "Id": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\components\\Header.jsx",
-      "PackagePath": "staticwebassets\\components\\Header.jsx"
+      "Id": "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\wwwroot\\dist\\index.html",
+      "PackagePath": "staticwebassets\\dist\\index.html"
     },
     {
-      "Id": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\index.html",
-      "PackagePath": "staticwebassets\\index.html"
-    },
-    {
-      "Id": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\index.js",
+      "Id": "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\wwwroot\\index.js",
       "PackagePath": "staticwebassets\\index.js"
     },
     {
-      "Id": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\wwwroot\\main.jsx",
-      "PackagePath": "staticwebassets\\main.jsx"
+      "Id": "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\wwwroot\\package-lock.json",
+      "PackagePath": "staticwebassets\\package-lock.json"
+    },
+    {
+      "Id": "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\wwwroot\\package.json",
+      "PackagePath": "staticwebassets\\package.json"
+    },
+    {
+      "Id": "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\wwwroot\\src\\App.jsx",
+      "PackagePath": "staticwebassets\\src\\App.jsx"
+    },
+    {
+      "Id": "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\wwwroot\\src\\components\\Form.jsx",
+      "PackagePath": "staticwebassets\\src\\components\\Form.jsx"
+    },
+    {
+      "Id": "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\wwwroot\\src\\components\\Header.jsx",
+      "PackagePath": "staticwebassets\\src\\components\\Header.jsx"
+    },
+    {
+      "Id": "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\wwwroot\\src\\index.html",
+      "PackagePath": "staticwebassets\\src\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\wwwroot\\src\\logo.svg",
+      "PackagePath": "staticwebassets\\src\\logo.svg"
+    },
+    {
+      "Id": "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\wwwroot\\src\\main.jsx",
+      "PackagePath": "staticwebassets\\src\\main.jsx"
+    },
+    {
+      "Id": "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\wwwroot\\vite.config.js",
+      "PackagePath": "staticwebassets\\vite.config.js"
     },
     {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.backend.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
