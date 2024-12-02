@@ -22,7 +22,6 @@
         "sources": {
           "C:\\Users\\Nadia\\Desktop\\Tools": {},
           "C:\\Users\\Nadia\\Downloads": {},
-          "C:\\Users\\Nadia\\Downlods": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -47,6 +46,14 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "FirebaseAdmin": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Google.Cloud.Firestore": {
+              "target": "Package",
+              "version": "[3.9.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.0, )"
