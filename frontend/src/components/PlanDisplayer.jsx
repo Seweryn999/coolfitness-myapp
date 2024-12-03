@@ -2,14 +2,22 @@ import React, { useEffect, useState } from "react";
 
 function PlanDisplayer({ formData }) {
   const [plan, setPlan] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchPlan = async () => {
+      setLoading(true);
+      setError(null); // Reset any previous errors
+      setPlan(null); // Clear previous plan
+
       try {
+        if (!formData || Object.keys(formData).length === 0) {
+          throw new Error("Invalid form data provided.");
+        }
+
         const response = await fetch(
-          "http://localhost:5000/api/plan/generate",
+          "http://localhost:5067/api/plan/generate", // Update the port to match backend
           {
             method: "POST",
             headers: {
@@ -27,7 +35,7 @@ function PlanDisplayer({ formData }) {
         setPlan(data);
       } catch (err) {
         console.error("Error fetching plan:", err);
-        setError("Failed to fetch the training plan.");
+        setError(err.message || "Failed to fetch the training plan.");
       } finally {
         setLoading(false);
       }
@@ -47,7 +55,7 @@ function PlanDisplayer({ formData }) {
   }
 
   if (!plan) {
-    return <div>No plan available.</div>;
+    return <div>No plan available. Please provide valid form data.</div>;
   }
 
   return (
