@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\backend.csproj": {}
+    "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\backend.csproj": {
+    "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\backend.csproj",
+        "projectUniqueName": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\backend.csproj",
-        "packagesPath": "C:\\Users\\Nadia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nadia\\Documents\\GitHub\\coolfitness-myapp\\backend\\obj\\",
+        "projectPath": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\backend.csproj",
+        "packagesPath": "C:\\Users\\Seweryn\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Nadia\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Seweryn\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Users\\Nadia\\Desktop\\Tools": {},
-          "C:\\Users\\Nadia\\Downloads": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +58,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[7.1.0, )"
             }
           },
           "imports": [
