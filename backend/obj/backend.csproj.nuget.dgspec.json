@@ -44,6 +44,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Firebase.Database": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "FirebaseAdmin": {
               "target": "Package",
               "version": "[3.1.0, )"
