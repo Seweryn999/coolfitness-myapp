@@ -1,3 +1,6 @@
+using CoolFitnessBackend.Models;
+
+
 namespace CoolFitnessBackend.Services
 {
     public class PlanGenerator
@@ -11,7 +14,7 @@ namespace CoolFitnessBackend.Services
 
         public WorkoutPlan GeneratePlan(UserPreferences preferences)
         {
-            // Generate and return the workout plan
+            
             return new WorkoutPlan
             {
                 Goal = preferences.Goal,

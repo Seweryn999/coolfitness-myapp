@@ -1,9 +1,9 @@
 using Microsoft.OpenApi.Models;
-using CoolFitnessBackend.Services; // Add this line to include PlanGenerator
+using CoolFitnessBackend.Services; 
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Dodaj usługi do kontenera.
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// Rejestracja usługi PlanGenerator z path do pliku exercises.json
+
 builder.Services.AddSingleton<PlanGenerator>(provider =>
 {
     var env = provider.GetRequiredService<IHostEnvironment>();
@@ -24,10 +24,10 @@ builder.Services.AddSingleton<PlanGenerator>(provider =>
 
 var app = builder.Build();
 
-// Skonfiguruj potok żądań HTTP.
+
 if (app.Environment.IsDevelopment())
 {
-    // Swagger jest dostępny tylko w trybie deweloperskim
+    
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
@@ -37,16 +37,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Obsługa plików statycznych (np. HTML, CSS, JS)
-app.UseDefaultFiles();  // Używa domyślnego pliku (np. index.html)
-app.UseStaticFiles();   // Umożliwia dostęp do plików statycznych (np. obrazy, CSS, JavaScript)
 
-// Przekierowanie nieznanych ścieżek do aplikacji React (np. `index.html` w przypadku aplikacji SPA)
+app.UseDefaultFiles();  
+app.UseStaticFiles();   
+
+
 app.MapFallbackToFile("index.html");
 
-// Endpointy API
 
-// Endpoint zwracający prognozę pogody
 app.MapGet("/weatherforecast", () =>
 {
     var summaries = new[] 
@@ -66,7 +64,7 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
-// Endpoint do generowania planu treningowego
+
 app.MapPost("/generatePlan", (UserPreferences preferences, PlanGenerator generator) =>
 {
     var plan = generator.GeneratePlan(preferences);
@@ -76,16 +74,16 @@ app.MapPost("/generatePlan", (UserPreferences preferences, PlanGenerator generat
 
 app.Run();
 
-// Rekord prognozy pogody
+
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556); // Konwersja na stopnie Fahrenheita
+    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556); 
 }
 
-// Model danych użytkownika (powinien być zdefiniowany w PlanGenerator.cs lub w osobnym pliku)
+
 public class UserPreferences
 {
-    public string Goal { get; set; } = string.Empty; // Initialize with an empty string
-    public string Intensity { get; set; } = string.Empty; // Initialize with an empty string
+    public string Goal { get; set; } = string.Empty; 
+    public string Intensity { get; set; } = string.Empty; 
     public int Duration { get; set; }
 }

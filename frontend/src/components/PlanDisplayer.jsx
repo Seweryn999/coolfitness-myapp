@@ -8,13 +8,16 @@ function PlanDisplayer({ formData }) {
   useEffect(() => {
     const fetchPlan = async () => {
       try {
-        const response = await fetch("/api/plan/generate", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData), // Wysyłamy dane z formularza do backendu
-        });
+        const response = await fetch(
+          "http://localhost:5000/api/plan/generate",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          }
+        );
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

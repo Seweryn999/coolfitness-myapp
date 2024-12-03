@@ -12,9 +12,9 @@ const firebaseConfig = {
   messagingSenderId: "1061755816855",
 };
 
+
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-
 
 function Form({ onSubmit }) {
   const [formData, setFormData] = useState({
@@ -30,11 +30,13 @@ function Form({ onSubmit }) {
 
   const [notification, setNotification] = useState("");
 
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  
   const validateFormData = (data) => {
     if (!data.name || data.name.trim().length < 3) {
       return "The name must contain at least 3 characters.";
@@ -79,15 +81,18 @@ function Form({ onSubmit }) {
     return null;
   };
 
+  
   const handleSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
+    
     const validationError = validateFormData(formData);
     if (validationError) {
       setNotification(validationError);
       return;
     }
 
+  
     const entriesRef = ref(database, "Entries");
     push(entriesRef, formData)
       .then(() => {
@@ -115,62 +120,16 @@ function Form({ onSubmit }) {
       <p>Your personal trainer will create a workout plan just for you.</p>
       <p>Please fill out the form:</p>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="phoneNumber"
-          placeholder="Phone Number"
-          value={formData.phoneNumber}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="height"
-          placeholder="Height (cm)"
-          value={formData.height}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="weight"
-          placeholder="Weight (kg)"
-          value={formData.weight}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="age"
-          placeholder="Age"
-          value={formData.age}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="gymExperience"
-          placeholder="Gym Experience (months)"
-          value={formData.gymExperience}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="muscleGroups"
-          placeholder="Muscle Groups (all, legs, upper body)"
-          value={formData.muscleGroups}
-          onChange={handleChange}
-        />
+        {Object.keys(formData).map((key) => (
+          <input
+            key={key}
+            type="text"
+            name={key}
+            placeholder={key.replace(/([A-Z])/g, " $1")}
+            value={formData[key]}
+            onChange={handleChange}
+          />
+        ))}
         <button type="submit">Submit</button>
       </form>
       {notification && <p className="notification">{notification}</p>}
