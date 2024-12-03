@@ -3,10 +3,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using CoolFitnessBackend.Services;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Dodanie usług do kontenera
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -18,26 +19,27 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// Register the PlanGenerator service as a singleton
+// Rejestracja PlanGenerator jako singleton
 builder.Services.AddSingleton<PlanGenerator>(provider =>
 {
     var env = provider.GetRequiredService<IHostEnvironment>();
-    var jsonFilePath = Path.Combine(env.ContentRootPath, "exercises.json");  // Path to your exercises data (if any)
-    return new PlanGenerator(jsonFilePath);
+    var jsonFilePath = Path.Combine(env.ContentRootPath, "exercises.json");  // Ścieżka do pliku JSON
+    return new PlanGenerator(jsonFilePath);  // Ścieżka do pliku przekazywana do konstruktora
 });
 
-// Add CORS policy to allow requests from the frontend
+// Dodanie polityki CORS dla frontendowych żądań
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend",
-        builder => builder.WithOrigins("http://localhost:5173")  // Frontend URL (adjust if needed)
-                        .AllowAnyHeader()
-                        .AllowAnyMethod());
+    options.AddPolicy("AllowFrontend", policyBuilder =>
+        policyBuilder.WithOrigins("http://localhost:5173")  // Zmień URL na frontendowy
+                     .AllowAnyHeader()
+                     .AllowAnyMethod()
+                     .AllowCredentials());  // Jeśli potrzeba ciasteczek/autoryzacji
 });
 
 var app = builder.Build();
 
-// Enable middleware to serve Swagger UI and generate Swagger docs in the development environment
+// Włączenie Swagger UI w środowisku deweloperskim
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -47,45 +49,40 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-// Enable HTTPS redirection (optional)
-app.UseHttpsRedirection();
-
-// Enable CORS for frontend requests
+// Włączenie obsługi CORS
 app.UseCors("AllowFrontend");
 
-// Enable serving static files (if you have any like images, JS, etc.)
-app.UseDefaultFiles();
-app.UseStaticFiles();
-
-// Map fallback for Single Page Application (SPA) to serve the frontend (like React/Vue.js)
-app.MapFallbackToFile("index.html");
-
-// Endpoint to generate a workout plan based on user preferences
+// Mapowanie endpointów API
 app.MapPost("/api/plan/generate", (UserPreferences preferences, PlanGenerator generator) =>
 {
+    // Weryfikacja danych wejściowych
+    if (string.IsNullOrEmpty(preferences.Goal) || preferences.Duration <= 0)
+    {
+        return Results.BadRequest("Invalid user preferences provided.");
+    }
+
+    // Generowanie planu treningowego
     var plan = generator.GeneratePlan(preferences);
-    return Results.Json(plan);
+    return Results.Ok(plan);
 })
 .WithName("GeneratePlan")
 .WithTags("Fitness Plan");
 
-// Start the application
+// Uruchomienie aplikacji
 app.Run();
 
-/// <summary>
-/// WeatherForecast record for generating a mock weather forecast (optional endpoint)
-/// </summary>
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
-
-/// <summary>
-/// User preferences for generating a workout plan
-/// </summary>
+// Definicje klas dla użytkownika i planu
 public class UserPreferences
 {
-    public string Goal { get; set; } = string.Empty;  // User's fitness goal (e.g., Weight Loss, Muscle Gain)
-    public string Intensity { get; set; } = string.Empty;  // Preferred intensity level (e.g., Low, Medium, High)
-    public int Duration { get; set; }  // Duration in minutes or days for the plan
+    public string Goal { get; set; } = string.Empty;  
+    public string Intensity { get; set; } = string.Empty;  
+    public int Duration { get; set; }  
+}
+
+public class FitnessPlan
+{
+    public string Goal { get; set; }
+    public string Intensity { get; set; }
+    public int Duration { get; set; }
+    public string PlanDetails { get; set; }
 }

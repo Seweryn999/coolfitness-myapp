@@ -101,3 +101,5 @@ C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\bin\Debug\n
 C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\bin\Debug\net9.0\System.Linq.Async.dll
 C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\bin\Debug\net9.0\System.Management.dll
 C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\bin\Debug\net9.0\runtimes\win\lib\net7.0\System.Management.dll
+C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\bin\Debug\net9.0\backend.staticwebassets.runtime.json
+C:\Users\Seweryn\OneDrive\Pulpit\MY-REPO'S\coolfitness-myapp\backend\obj\Debug\net9.0\compressed\0yulyb0yu6-p9hykaejox.gz

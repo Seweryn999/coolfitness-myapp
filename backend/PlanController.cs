@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using CoolFitnessBackend.Models; 
+using CoolFitnessBackend.Models;
 using CoolFitnessBackend.Services;
 
 namespace CoolFitnessBackend.Controllers
@@ -10,9 +10,10 @@ namespace CoolFitnessBackend.Controllers
     {
         private readonly PlanGenerator _planGenerator;
 
-        public PlanController()
+        // Konstruktor PlanController, wstrzykuje zależność PlanGenerator
+        public PlanController(PlanGenerator planGenerator)
         {
-            _planGenerator = new PlanGenerator("path-to-config.json");
+            _planGenerator = planGenerator ?? throw new ArgumentNullException(nameof(planGenerator));  // Sprawdzamy null
         }
 
         [HttpPost("generate")]
