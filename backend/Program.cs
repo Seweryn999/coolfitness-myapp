@@ -23,18 +23,25 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddSingleton<PlanGenerator>(provider =>
 {
     var env = provider.GetRequiredService<IHostEnvironment>();
-    var jsonFilePath = Path.Combine(env.ContentRootPath, "exercises.json");  // Ścieżka do pliku JSON
-    return new PlanGenerator(jsonFilePath);  // Ścieżka do pliku przekazywana do konstruktora
+    var jsonFilePath = Path.Combine(env.ContentRootPath, "exercises.json");
+
+    // Sprawdzenie, czy plik istnieje
+    if (!File.Exists(jsonFilePath))
+    {
+        Console.WriteLine($"Plik exercises.json nie został znaleziony w ścieżce: {jsonFilePath}");
+    }
+
+    return new PlanGenerator(jsonFilePath);
 });
 
 // Dodanie polityki CORS dla frontendowych żądań
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policyBuilder =>
-        policyBuilder.WithOrigins("http://localhost:5173")  // Zmień URL na frontendowy
+        policyBuilder.WithOrigins("http://localhost:5173")
                      .AllowAnyHeader()
                      .AllowAnyMethod()
-                     .AllowCredentials());  // Jeśli potrzeba ciasteczek/autoryzacji
+                     .AllowCredentials());
 });
 
 var app = builder.Build();
@@ -79,9 +86,9 @@ app.Run();
 // Definicje klas dla użytkownika i planu
 public class UserPreferences
 {
-    public string Goal { get; set; } = string.Empty;  
-    public string Intensity { get; set; } = string.Empty;  
-    public int Duration { get; set; }  
+    public string Goal { get; set; } = string.Empty;
+    public string Intensity { get; set; } = string.Empty;
+    public int Duration { get; set; }
 }
 
 public class FitnessPlan
