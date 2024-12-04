@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using CoolFitnessBackend.Models;
 using CoolFitnessBackend.Services;
 
 namespace CoolFitnessBackend.Controllers
@@ -10,27 +9,40 @@ namespace CoolFitnessBackend.Controllers
     {
         private readonly PlanGenerator _planGenerator;
 
-        // Konstruktor PlanController, wstrzykuje zależność PlanGenerator
         public PlanController(PlanGenerator planGenerator)
         {
-            _planGenerator = planGenerator ?? throw new ArgumentNullException(nameof(planGenerator));  // Sprawdzamy null
+            _planGenerator = planGenerator ?? throw new ArgumentNullException(nameof(planGenerator));
         }
 
         [HttpPost("generate")]
         public IActionResult GeneratePlan([FromBody] UserPreferences preferences)
         {
-            Console.WriteLine($"Otrzymane dane: Goal={preferences.Goal}, Intensity={preferences.Intensity}, Duration={preferences.Duration}");
+            Console.WriteLine($"Received preferences: Goal={preferences.Goal}, Intensity={preferences.Intensity}, Duration={preferences.Duration}");
 
-            if (preferences == null)
+            if (preferences == null ||
+                string.IsNullOrEmpty(preferences.Goal) ||
+                string.IsNullOrEmpty(preferences.Intensity) ||
+                preferences.Duration <= 0)
             {
-                Console.WriteLine("Preferences cannot be null");
-                return BadRequest("Preferences cannot be null");
+                return BadRequest(new { message = "Invalid data. Ensure all fields (Goal, Intensity, Duration) are provided and valid." });
             }
 
-            var plan = _planGenerator.GeneratePlan(preferences);
-            Console.WriteLine($"Wygenerowany plan: {plan.Goal}, {plan.Intensity}, {plan.Duration}");
+            try
+            {
+                var plan = _planGenerator.GeneratePlan(preferences);
 
-            return Ok(plan);
+                if (plan == null)
+                {
+                    return BadRequest(new { message = "Unable to generate a training plan for the provided preferences." });
+                }
+
+                return Ok(plan);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error generating plan: {ex.Message}");
+                return StatusCode(500, new { message = "An error occurred while generating the plan." });
+            }
         }
     }
 }

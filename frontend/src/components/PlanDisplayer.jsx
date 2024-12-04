@@ -14,10 +14,19 @@ function PlanDisplayer({ formData }) {
       console.log("Wysyłanie danych do backendu:", formData);
 
       try {
-        if (!formData || Object.keys(formData).length === 0) {
-          throw new Error("Nieprawidłowe dane formularza.");
+        // Walidacja danych formularza
+        if (
+          !formData ||
+          !formData.Goal ||
+          !formData.Intensity ||
+          !formData.Duration
+        ) {
+          throw new Error(
+            "Nieprawidłowe dane formularza. Upewnij się, że wszystkie pola są wypełnione."
+          );
         }
 
+        // Wysłanie żądania do backendu
         const response = await fetch(
           "http://localhost:5000/api/plan/generate",
           {
@@ -30,7 +39,6 @@ function PlanDisplayer({ formData }) {
         );
 
         console.log("Status odpowiedzi backendu:", response.status);
-        console.log("Odpowiedź: ", response);
 
         const textResponse = await response.text();
         console.log("Odpowiedź tekstowa z backendu:", textResponse);
@@ -43,17 +51,11 @@ function PlanDisplayer({ formData }) {
           );
         }
 
-        let data;
-        try {
-          data = JSON.parse(textResponse);
-        } catch (error) {
-          console.error("Błąd parsowania odpowiedzi JSON:", error);
-          throw new Error("Odpowiedź nie jest poprawnym JSON-em.");
-        }
-
+        // Parsowanie odpowiedzi z backendu
+        const data = JSON.parse(textResponse);
         console.log("Odebrane dane z backendu:", data);
 
-        setPlan(data);
+        setPlan(data); // Przechowywanie planu w stanie
       } catch (err) {
         console.error("Błąd podczas pobierania planu:", err);
         setError(err.message || "Nie udało się pobrać planu treningowego.");
@@ -83,13 +85,18 @@ function PlanDisplayer({ formData }) {
     <div>
       <h2>Twój Plan Treningowy</h2>
       <div>
-        <h3>Cel: {plan.Goal}</h3>
-        <h3>Intensywność: {plan.Intensity}</h3>
-        <h3>Czas trwania: {plan.Duration} minut</h3>
-        <p>{plan.PlanDetails}</p>
+        <h3>Cel: {plan.goal}</h3>{" "}
+        {/* Zmieniono na 'goal' zgodnie z odpowiedzią */}
+        <h3>Intensywność: {plan.intensity}</h3> {/* Zmieniono na 'intensity' */}
+        <h3>Czas trwania: {plan.duration} minut</h3>{" "}
+        {/* Zmieniono na 'duration' */}
+        <div>
+          <h4>Plan treningowy:</h4>
+          <p>{plan.planDetails}</p> {/* Wyświetlanie detali planu */}
+        </div>
       </div>
     </div>
   );
 }
 
-export default PlanDisplayer; // Upewnij się, że tutaj jest `export default`
+export default PlanDisplayer;

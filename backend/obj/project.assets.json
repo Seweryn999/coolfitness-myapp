@@ -2296,7 +2296,7 @@
       "code": "NU1904",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'LiteDB' 5.0.12 has a known critical severity vulnerability, https://github.com/advisories/GHSA-3x49-g6rc-c284",
+      "message": "Pakiet „LiteDB” 5.0.12 ma znane krytyczna luki w zabezpieczeniach o ważności, https://github.com/advisories/GHSA-3x49-g6rc-c284",
       "libraryId": "LiteDB",
       "targetGraphs": [
         "net7.0"

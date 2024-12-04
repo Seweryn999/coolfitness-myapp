@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { getDatabase, ref, push } from "firebase/database";
 import { initializeApp } from "firebase/app";
-import "./styles/Form.css"; 
-
+import "./styles/Form.css";
 
 const firebaseConfig = {
   authDomain: "coolfitness-f1486.firebaseapp.com",
@@ -12,102 +11,52 @@ const firebaseConfig = {
   messagingSenderId: "1061755816855",
 };
 
-
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 function Form({ onSubmit }) {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    height: "",
-    weight: "",
-    age: "",
-    gymExperience: "",
-    muscleGroups: "",
+    Goal: "", // Cel planu
+    Intensity: "", // Intensywność (np. "upper body", "all")
+    Duration: "", // Czas trwania planu w minutach
   });
 
   const [notification, setNotification] = useState("");
 
-  
+  // Obsługuje zmiany w formularzu
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  
+  // Walidacja formularza
   const validateFormData = (data) => {
-    if (!data.name || data.name.trim().length < 3) {
-      return "The name must contain at least 3 characters.";
+    if (!data.Goal || !data.Intensity || !data.Duration) {
+      return "Please fill in all the fields.";
     }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-      return "Please provide a valid email address.";
-    }
-
-    if (!/^\d{9,}$/.test(data.phoneNumber)) {
-      return "Please provide a valid phone number (at least 9 digits).";
-    }
-
-    const height = parseInt(data.height, 10);
-    if (isNaN(height) || height < 150 || height > 250) {
-      return "Height must be a number between 150-250 cm.";
-    }
-
-    const weight = parseInt(data.weight, 10);
-    if (isNaN(weight) || weight < 30 || weight > 300) {
-      return "Weight must be a number between 30-300 kg.";
-    }
-
-    const age = parseInt(data.age, 10);
-    if (isNaN(age) || age < 16 || age > 100) {
-      return "Age must be a number between 16-100 years.";
-    }
-
-    const gymExperience = parseInt(data.gymExperience, 10);
-    if (isNaN(gymExperience) || gymExperience < 0 || gymExperience > 600) {
-      return "Gym experience must be a number of months between 0-600.";
-    }
-
-    if (
-      !["all", "legs", "upper body"].includes(
-        data.muscleGroups.trim().toLowerCase()
-      )
-    ) {
-      return "Please provide a valid muscle group (all, legs, upper body).";
-    }
-
     return null;
   };
 
-  
+  // Obsługuje wysyłanie formularza
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    
     const validationError = validateFormData(formData);
     if (validationError) {
       setNotification(validationError);
       return;
     }
 
-  
     const entriesRef = ref(database, "Entries");
     push(entriesRef, formData)
       .then(() => {
         setNotification("Thank you for signing up! We’ll be in touch soon.");
         setFormData({
-          name: "",
-          email: "",
-          phoneNumber: "",
-          height: "",
-          weight: "",
-          age: "",
-          gymExperience: "",
-          muscleGroups: "",
+          Goal: "",
+          Intensity: "",
+          Duration: "",
         });
-        onSubmit(formData); 
+        onSubmit(formData); // Przekazanie danych do PlanDisplayer
       })
       .catch((error) => {
         setNotification("Something went wrong. Please try again.");
@@ -120,16 +69,41 @@ function Form({ onSubmit }) {
       <p>Your personal trainer will create a workout plan just for you.</p>
       <p>Please fill out the form:</p>
       <form onSubmit={handleSubmit}>
-        {Object.keys(formData).map((key) => (
+        <div>
+          <label htmlFor="Goal">Goal (e.g., weight loss, muscle gain):</label>
           <input
-            key={key}
+            id="Goal"
             type="text"
-            name={key}
-            placeholder={key.replace(/([A-Z])/g, " $1")}
-            value={formData[key]}
+            name="Goal"
+            placeholder="Goal"
+            value={formData.Goal}
             onChange={handleChange}
           />
-        ))}
+        </div>
+        <div>
+          <label htmlFor="Intensity">
+            Intensity (e.g., upper body, full body):
+          </label>
+          <input
+            id="Intensity"
+            type="text"
+            name="Intensity"
+            placeholder="Intensity"
+            value={formData.Intensity}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="Duration">Duration (in minutes):</label>
+          <input
+            id="Duration"
+            type="number"
+            name="Duration"
+            placeholder="Duration"
+            value={formData.Duration}
+            onChange={handleChange}
+          />
+        </div>
         <button type="submit">Submit</button>
       </form>
       {notification && <p className="notification">{notification}</p>}

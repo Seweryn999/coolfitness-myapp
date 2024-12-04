@@ -9,12 +9,11 @@ namespace CoolFitnessBackend.Services
         private readonly string _jsonFilePath;
         private readonly List<WorkoutPlan> _workoutPlans;
 
-        // Constructor to initialize PlanGenerator with a JSON file path
         public PlanGenerator(string jsonFilePath)
         {
-            _jsonFilePath = jsonFilePath ?? throw new ArgumentNullException(nameof(jsonFilePath));  // Null check
+            _jsonFilePath = jsonFilePath ?? throw new ArgumentNullException(nameof(jsonFilePath));
 
-            // Load and deserialize data from the JSON file
+            // Wczytujemy plik JSON z planami
             if (File.Exists(_jsonFilePath))
             {
                 var jsonData = File.ReadAllText(_jsonFilePath);
@@ -23,70 +22,67 @@ namespace CoolFitnessBackend.Services
             }
             else
             {
-                throw new FileNotFoundException("The workout plan file was not found.", _jsonFilePath);
+                throw new FileNotFoundException("Nie znaleziono pliku z planem treningowym.", _jsonFilePath);
             }
         }
 
-        // Method to generate a fitness plan based on user preferences
+        // Metoda generująca plan na podstawie preferencji użytkownika
         public FitnessPlan GeneratePlan(UserPreferences preferences)
         {
-            if (preferences == null) throw new ArgumentNullException(nameof(preferences));  // Null check
+            Console.WriteLine($"Generowanie planu dla: Cel={preferences.Goal}, Intensywność={preferences.Intensity}, Czas trwania={preferences.Duration}");
 
-            // Find matching plans based on preferences
+            // Dopasowanie planów na podstawie celów i intensywności
             var matchingPlans = _workoutPlans
-                .Where(p => !string.IsNullOrEmpty(p.ExperienceLevel) &&
-                            p.ExperienceLevel.Equals(preferences.Goal, StringComparison.OrdinalIgnoreCase))
-                .Where(p => !string.IsNullOrEmpty(p.MuscleGroup) &&
-                            p.MuscleGroup.Equals(preferences.Intensity, StringComparison.OrdinalIgnoreCase))
+                .Where(p => p.ExperienceLevel.Equals(preferences.Goal, StringComparison.OrdinalIgnoreCase))
+                .Where(p => p.MuscleGroup.Equals(preferences.Intensity, StringComparison.OrdinalIgnoreCase))
                 .ToList();
 
+            // Jeśli brak dopasowanych planów
             if (!matchingPlans.Any())
             {
-                throw new InvalidOperationException("No matching workout plans found for the given preferences.");
+                return new FitnessPlan
+                {
+                    Goal = preferences.Goal,
+                    Intensity = preferences.Intensity,
+                    Duration = preferences.Duration,
+                    PlanDetails = "Nie znaleziono planów treningowych odpowiadających Twoim preferencjom. Spróbuj ponownie z innymi ustawieniami."
+                };
             }
 
-            // Select a plan based on available data
-            var selectedPlan = matchingPlans.FirstOrDefault();  // Additional criteria can be added here
-
-            if (selectedPlan == null)
-            {
-                throw new InvalidOperationException("Failed to select a workout plan.");
-            }
-
-            // Generate plan details
+            // Wybór pierwszego dopasowanego planu
+            var selectedPlan = matchingPlans.First();
             var planDetails = GeneratePlanDetails(selectedPlan);
 
             return new FitnessPlan
             {
-                Goal = preferences.Goal ?? "Default Goal",
-                Intensity = preferences.Intensity ?? "Default Intensity",
+                Goal = preferences.Goal,
+                Intensity = preferences.Intensity,
                 Duration = preferences.Duration,
                 PlanDetails = planDetails
             };
         }
 
-        // Generate detailed plan information
+        // Metoda generująca szczegóły planu treningowego
         private string GeneratePlanDetails(WorkoutPlan workoutPlan)
         {
-            if (workoutPlan == null) throw new ArgumentNullException(nameof(workoutPlan));  // Null check
-
             var details = new StringBuilder();
 
+            // Przechodzimy przez każdy dzień planu
             foreach (var day in workoutPlan.Plan)
             {
-                details.AppendLine($"Day {day.Day}:");
+                details.AppendLine($"Dzień {day.Day}:");
                 foreach (var exercise in day.Exercises)
                 {
-                    details.AppendLine($"- {exercise.Name}: {exercise.Sets} sets, {exercise.Reps} reps");
+                    details.AppendLine($"- {exercise.Name}: {exercise.Sets} serie, {exercise.Reps} powtórzenia");
                 }
-                details.AppendLine();
+                details.AppendLine(); // Pusta linia po każdym dniu
             }
 
             return details.ToString();
         }
     }
 
-    // Helper classes for deserialization
+    // Klasy pomocnicze do deserializacji planów z JSON-a
 
     public class WorkoutPlansWrapper
     {
@@ -96,22 +92,21 @@ namespace CoolFitnessBackend.Services
     public class WorkoutPlan
     {
         public int Id { get; set; }
-        public string MuscleGroup { get; set; } = string.Empty;
-        public string ExperienceLevel { get; set; } = string.Empty;
-        public List<DayPlan> Plan { get; set; } = new List<DayPlan>();
+        public string MuscleGroup { get; set; } = string.Empty; // Grupa mięśni
+        public string ExperienceLevel { get; set; } = string.Empty; // Poziom doświadczenia (np. początkujący, zaawansowany)
+        public List<DayPlan> Plan { get; set; } = new List<DayPlan>(); // Plan podzielony na dni
     }
 
     public class DayPlan
     {
-        public int Day { get; set; }
-        public List<Exercise> Exercises { get; set; } = new List<Exercise>();
+        public int Day { get; set; } // Numer dnia
+        public List<Exercise> Exercises { get; set; } = new List<Exercise>(); // Ćwiczenia w danym dniu
     }
 
     public class Exercise
     {
-        public string Name { get; set; } = string.Empty;
-        public int Sets { get; set; }
-        public int Reps { get; set; }
-        public string Duration { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty; // Nazwa ćwiczenia
+        public int Sets { get; set; } // Liczba serii
+        public int Reps { get; set; } // Liczba powtórzeń
     }
 }
