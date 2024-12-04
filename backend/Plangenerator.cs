@@ -1,4 +1,5 @@
 using CoolFitnessBackend.Models;
+using System.Text;  // Dodajemy tę przestrzeń nazw, aby używać StringBuilder
 using System.Text.Json;
 
 namespace CoolFitnessBackend.Services
@@ -17,8 +18,8 @@ namespace CoolFitnessBackend.Services
             if (File.Exists(_jsonFilePath))
             {
                 var jsonData = File.ReadAllText(_jsonFilePath);
-                var workoutPlans = JsonSerializer.Deserialize<WorkoutPlans>(jsonData);
-                _workoutPlans = workoutPlans?.WorkoutPlans ?? new List<WorkoutPlan>();
+                var workoutPlans = JsonSerializer.Deserialize<WorkoutPlansWrapper>(jsonData);  // Zmieniona nazwa klasy do WorkoutPlansWrapper
+                _workoutPlans = workoutPlans?.Plans ?? new List<WorkoutPlan>();  // Zmieniona nazwa właściwości Plans
             }
             else
             {
@@ -78,9 +79,9 @@ namespace CoolFitnessBackend.Services
 
     // Klasy pomocnicze do deserializacji JSON
 
-    public class WorkoutPlans
+    public class WorkoutPlansWrapper  // Zmieniona nazwa klasy z WorkoutPlans na WorkoutPlansWrapper
     {
-        public List<WorkoutPlan> WorkoutPlans { get; set; } = new List<WorkoutPlan>();
+        public List<WorkoutPlan> Plans { get; set; } = new List<WorkoutPlan>();  // Zmieniona nazwa właściwości Plans
     }
 
     public class WorkoutPlan
