@@ -19,12 +19,17 @@ namespace CoolFitnessBackend.Controllers
         [HttpPost("generate")]
         public IActionResult GeneratePlan([FromBody] UserPreferences preferences)
         {
+            Console.WriteLine($"Otrzymane dane: Goal={preferences.Goal}, Intensity={preferences.Intensity}, Duration={preferences.Duration}");
+
             if (preferences == null)
             {
+                Console.WriteLine("Preferences cannot be null");
                 return BadRequest("Preferences cannot be null");
             }
 
             var plan = _planGenerator.GeneratePlan(preferences);
+            Console.WriteLine($"Wygenerowany plan: {plan.Goal}, {plan.Intensity}, {plan.Duration}");
+
             return Ok(plan);
         }
     }

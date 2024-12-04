@@ -55,14 +55,19 @@ app.UseCors("AllowFrontend");
 // Mapowanie endpointów API
 app.MapPost("/api/plan/generate", (UserPreferences preferences, PlanGenerator generator) =>
 {
+    // Logowanie otrzymanych danych
+    Console.WriteLine($"Otrzymane dane: {preferences.Goal}, {preferences.Intensity}, {preferences.Duration}");
+
     // Weryfikacja danych wejściowych
     if (string.IsNullOrEmpty(preferences.Goal) || preferences.Duration <= 0)
     {
+        Console.WriteLine("Invalid user preferences provided.");
         return Results.BadRequest("Invalid user preferences provided.");
     }
 
     // Generowanie planu treningowego
     var plan = generator.GeneratePlan(preferences);
+    Console.WriteLine($"Wygenerowany plan: {plan.Goal}, {plan.Intensity}, {plan.Duration}");
     return Results.Ok(plan);
 })
 .WithName("GeneratePlan")
