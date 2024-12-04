@@ -5,7 +5,6 @@ function PlanDisplayer({ formData }) {
   const [loading, setLoading] = useState(false); // Status ładowania
   const [error, setError] = useState(null); // Obsługa błędów
 
-  // Efekt odpowiadający za pobranie planu
   useEffect(() => {
     const fetchPlan = async () => {
       setLoading(true);
@@ -15,77 +14,82 @@ function PlanDisplayer({ formData }) {
       console.log("Wysyłanie danych do backendu:", formData);
 
       try {
-        // Walidacja formData
         if (!formData || Object.keys(formData).length === 0) {
           throw new Error("Nieprawidłowe dane formularza.");
         }
 
-        // Wysyłanie żądania do backendu
         const response = await fetch(
-          "http://localhost:5000/api/plan/generate", // Endpoint backendu
+          "http://localhost:5000/api/plan/generate",
           {
             method: "POST",
             headers: {
-              "Content-Type": "application/json", // Typ danych
+              "Content-Type": "application/json",
             },
-            body: JSON.stringify(formData), // Przekazanie danych w żądaniu
+            body: JSON.stringify(formData),
           }
         );
 
         console.log("Status odpowiedzi backendu:", response.status);
+        console.log("Odpowiedź: ", response);
 
-        // Obsługa niepowodzeń w odpowiedzi
+        const textResponse = await response.text();
+        console.log("Odpowiedź tekstowa z backendu:", textResponse);
+
         if (!response.ok) {
-          throw new Error(`Błąd HTTP! Status: ${response.status}`);
+          const errorMessage = JSON.parse(textResponse);
+          console.error("Błąd odpowiedzi: ", errorMessage.message);
+          throw new Error(
+            `Błąd HTTP! Status: ${response.status} - ${errorMessage.message}`
+          );
         }
 
-        // Parsowanie odpowiedzi
-        const data = await response.json();
+        let data;
+        try {
+          data = JSON.parse(textResponse);
+        } catch (error) {
+          console.error("Błąd parsowania odpowiedzi JSON:", error);
+          throw new Error("Odpowiedź nie jest poprawnym JSON-em.");
+        }
+
         console.log("Odebrane dane z backendu:", data);
 
-        // Ustawienie odebranego planu
         setPlan(data);
       } catch (err) {
         console.error("Błąd podczas pobierania planu:", err);
         setError(err.message || "Nie udało się pobrać planu treningowego.");
       } finally {
-        setLoading(false); // Wyłączenie ładowania
+        setLoading(false);
       }
     };
 
-    // Wywołanie funkcji, jeśli dostępne są dane formularza
     if (formData) {
       fetchPlan();
     }
   }, [formData]);
 
-  // Renderowanie, gdy trwa ładowanie
   if (loading) {
     return <div>Ładowanie...</div>;
   }
 
-  // Renderowanie w przypadku błędu
   if (error) {
     return <div>Błąd: {error}</div>;
   }
 
-  // Renderowanie, gdy plan nie jest dostępny
   if (!plan) {
     return <div>Brak planu. Podaj poprawne dane formularza.</div>;
   }
 
-  // Renderowanie odebranego planu treningowego
   return (
     <div>
       <h2>Twój Plan Treningowy</h2>
       <div>
-        <h3>Cel: {plan.goal}</h3>
-        <h3>Intensywność: {plan.intensity}</h3>
-        <h3>Czas trwania: {plan.duration} minut</h3>
-        <p>{plan.planDetails}</p>
+        <h3>Cel: {plan.Goal}</h3>
+        <h3>Intensywność: {plan.Intensity}</h3>
+        <h3>Czas trwania: {plan.Duration} minut</h3>
+        <p>{plan.PlanDetails}</p>
       </div>
     </div>
   );
 }
 
-export default PlanDisplayer;
+export default PlanDisplayer; // Upewnij się, że tutaj jest `export default`
