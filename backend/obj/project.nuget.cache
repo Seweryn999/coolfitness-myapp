@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Cp13u/8Uprw=",
+  "dgSpecHash": "7evNT1dYmew=",
   "success": true,
   "projectFilePath": "C:\\Users\\Seweryn\\OneDrive\\Pulpit\\MY-REPO'S\\coolfitness-myapp\\backend\\backend.csproj",
   "expectedPackageFiles": [
@@ -23,7 +23,7 @@
     "C:\\Users\\Seweryn\\.nuget\\packages\\grpc.core.api\\2.66.0\\grpc.core.api.2.66.0.nupkg.sha512",
     "C:\\Users\\Seweryn\\.nuget\\packages\\grpc.net.client\\2.66.0\\grpc.net.client.2.66.0.nupkg.sha512",
     "C:\\Users\\Seweryn\\.nuget\\packages\\grpc.net.common\\2.66.0\\grpc.net.common.2.66.0.nupkg.sha512",
-    "C:\\Users\\Seweryn\\.nuget\\packages\\litedb\\5.0.11\\litedb.5.0.11.nupkg.sha512",
+    "C:\\Users\\Seweryn\\.nuget\\packages\\litedb\\5.0.12\\litedb.5.0.12.nupkg.sha512",
     "C:\\Users\\Seweryn\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.0\\microsoft.aspnetcore.openapi.7.0.0.nupkg.sha512",
     "C:\\Users\\Seweryn\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\Seweryn\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
@@ -57,7 +57,7 @@
       "code": "NU1904",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'LiteDB' 5.0.11 has a known critical severity vulnerability, https://github.com/advisories/GHSA-3x49-g6rc-c284",
+      "message": "Package 'LiteDB' 5.0.12 has a known critical severity vulnerability, https://github.com/advisories/GHSA-3x49-g6rc-c284",
       "libraryId": "LiteDB",
       "targetGraphs": [
         "net7.0"

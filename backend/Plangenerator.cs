@@ -1,5 +1,5 @@
 using CoolFitnessBackend.Models;
-using System.Text;  // Dodajemy tę przestrzeń nazw, aby używać StringBuilder
+using System.Text;  // For StringBuilder
 using System.Text.Json;
 
 namespace CoolFitnessBackend.Services
@@ -9,63 +9,72 @@ namespace CoolFitnessBackend.Services
         private readonly string _jsonFilePath;
         private readonly List<WorkoutPlan> _workoutPlans;
 
-        // Konstruktor PlanGenerator, który przyjmuje ścieżkę do pliku JSON
+        // Constructor to initialize PlanGenerator with a JSON file path
         public PlanGenerator(string jsonFilePath)
         {
-            _jsonFilePath = jsonFilePath ?? throw new ArgumentNullException(nameof(jsonFilePath));  // Sprawdzamy null
+            _jsonFilePath = jsonFilePath ?? throw new ArgumentNullException(nameof(jsonFilePath));  // Null check
 
-            // Wczytanie i deserializacja danych z pliku JSON
+            // Load and deserialize data from the JSON file
             if (File.Exists(_jsonFilePath))
             {
                 var jsonData = File.ReadAllText(_jsonFilePath);
-                var workoutPlans = JsonSerializer.Deserialize<WorkoutPlansWrapper>(jsonData);  // Zmieniona nazwa klasy do WorkoutPlansWrapper
-                _workoutPlans = workoutPlans?.Plans ?? new List<WorkoutPlan>();  // Zmieniona nazwa właściwości Plans
+                var workoutPlans = JsonSerializer.Deserialize<WorkoutPlansWrapper>(jsonData);
+                _workoutPlans = workoutPlans?.Plans ?? new List<WorkoutPlan>();
             }
             else
             {
-                throw new FileNotFoundException("Plik z ćwiczeniami nie został znaleziony.", _jsonFilePath);
+                throw new FileNotFoundException("The workout plan file was not found.", _jsonFilePath);
             }
         }
 
-        // Metoda generująca plan treningowy na podstawie preferencji użytkownika
+        // Method to generate a fitness plan based on user preferences
         public FitnessPlan GeneratePlan(UserPreferences preferences)
         {
-            if (preferences == null) throw new ArgumentNullException(nameof(preferences));  // Sprawdzamy null
+            if (preferences == null) throw new ArgumentNullException(nameof(preferences));  // Null check
 
-            // Wyszukaj odpowiedni plan na podstawie preferencji (cel, poziom trudności, grupa mięśniowa)
+            // Find matching plans based on preferences
             var matchingPlans = _workoutPlans
-                .Where(p => p.ExperienceLevel.Equals(preferences.Goal, StringComparison.OrdinalIgnoreCase))
-                .Where(p => p.MuscleGroup.Equals(preferences.Intensity, StringComparison.OrdinalIgnoreCase))
+                .Where(p => !string.IsNullOrEmpty(p.ExperienceLevel) &&
+                            p.ExperienceLevel.Equals(preferences.Goal, StringComparison.OrdinalIgnoreCase))
+                .Where(p => !string.IsNullOrEmpty(p.MuscleGroup) &&
+                            p.MuscleGroup.Equals(preferences.Intensity, StringComparison.OrdinalIgnoreCase))
                 .ToList();
 
             if (!matchingPlans.Any())
             {
-                throw new InvalidOperationException("Brak dopasowanych planów dla tych preferencji.");
+                throw new InvalidOperationException("No matching workout plans found for the given preferences.");
             }
 
-            // Wybór planu na podstawie dostępnych danych
-            var selectedPlan = matchingPlans.FirstOrDefault();  // Możesz tu dodać logikę wybierania na podstawie innych kryteriów
+            // Select a plan based on available data
+            var selectedPlan = matchingPlans.FirstOrDefault();  // Additional criteria can be added here
 
-            // Generowanie szczegółów planu
+            if (selectedPlan == null)
+            {
+                throw new InvalidOperationException("Failed to select a workout plan.");
+            }
+
+            // Generate plan details
             var planDetails = GeneratePlanDetails(selectedPlan);
 
             return new FitnessPlan
             {
-                Goal = preferences.Goal,
-                Intensity = preferences.Intensity,
+                Goal = preferences.Goal ?? "Default Goal",
+                Intensity = preferences.Intensity ?? "Default Intensity",
                 Duration = preferences.Duration,
                 PlanDetails = planDetails
             };
         }
 
-        // Generowanie szczegółów planu na podstawie wybranego planu
+        // Generate detailed plan information
         private string GeneratePlanDetails(WorkoutPlan workoutPlan)
         {
+            if (workoutPlan == null) throw new ArgumentNullException(nameof(workoutPlan));  // Null check
+
             var details = new StringBuilder();
 
             foreach (var day in workoutPlan.Plan)
             {
-                details.AppendLine($"Dzień {day.Day}:");
+                details.AppendLine($"Day {day.Day}:");
                 foreach (var exercise in day.Exercises)
                 {
                     details.AppendLine($"- {exercise.Name}: {exercise.Sets} sets, {exercise.Reps} reps");
@@ -77,11 +86,11 @@ namespace CoolFitnessBackend.Services
         }
     }
 
-    // Klasy pomocnicze do deserializacji JSON
+    // Helper classes for deserialization
 
-    public class WorkoutPlansWrapper  // Zmieniona nazwa klasy z WorkoutPlans na WorkoutPlansWrapper
+    public class WorkoutPlansWrapper
     {
-        public List<WorkoutPlan> Plans { get; set; } = new List<WorkoutPlan>();  // Zmieniona nazwa właściwości Plans
+        public List<WorkoutPlan> Plans { get; set; } = new List<WorkoutPlan>();
     }
 
     public class WorkoutPlan

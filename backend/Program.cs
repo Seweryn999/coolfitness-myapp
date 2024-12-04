@@ -59,6 +59,9 @@ if (app.Environment.IsDevelopment())
 // Włączenie obsługi CORS
 app.UseCors("AllowFrontend");
 
+// Dodanie endpointu głównego / (root), który będzie działał na https://localhost:5000/
+app.MapGet("/", () => "Witaj w aplikacji CoolFitness API!");
+
 // Mapowanie endpointów API
 app.MapPost("/api/plan/generate", (UserPreferences preferences, PlanGenerator generator) =>
 {
@@ -86,15 +89,15 @@ app.Run();
 // Definicje klas dla użytkownika i planu
 public class UserPreferences
 {
-    public string Goal { get; set; } = string.Empty;
-    public string Intensity { get; set; } = string.Empty;
+    public string Goal { get; set; } = string.Empty;      // Added default value
+    public string Intensity { get; set; } = string.Empty; // Added default value
     public int Duration { get; set; }
 }
 
 public class FitnessPlan
 {
-    public string Goal { get; set; }
-    public string Intensity { get; set; }
+    public string Goal { get; set; } = string.Empty;         // Added default value
+    public string Intensity { get; set; } = string.Empty;    // Added default value
     public int Duration { get; set; }
-    public string PlanDetails { get; set; }
+    public string PlanDetails { get; set; } = string.Empty;  // Added default value
 }

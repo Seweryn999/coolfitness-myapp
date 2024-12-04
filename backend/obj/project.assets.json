@@ -322,7 +322,7 @@
           }
         }
       },
-      "LiteDB/5.0.11": {
+      "LiteDB/5.0.12": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/LiteDB.dll": {
@@ -1185,10 +1185,10 @@
         "packageIcon.png"
       ]
     },
-    "LiteDB/5.0.11": {
-      "sha512": "6cL4bOmVCUB0gIK+6qIr68HeqjjHZicPDGQjvJ87mIOvkFsEsJWkIps3yoKNeLpHhJQur++yoQ9Q8gxsdos0xQ==",
+    "LiteDB/5.0.12": {
+      "sha512": "HaOjSIGS9BRm7dw42qcHd5NGYl5wdjsFB31pImt3QQNLKUNEmRAr7ADos5VsujwBc9c4otJgb+G6NA4MlzKyAw==",
       "type": "package",
-      "path": "litedb/5.0.11",
+      "path": "litedb/5.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1201,7 +1201,7 @@
         "lib/netstandard1.3/LiteDB.xml",
         "lib/netstandard2.0/LiteDB.dll",
         "lib/netstandard2.0/LiteDB.xml",
-        "litedb.5.0.11.nupkg.sha512",
+        "litedb.5.0.12.nupkg.sha512",
         "litedb.nuspec"
       ]
     },
@@ -2188,7 +2188,7 @@
       "FirebaseAdmin >= 3.1.0",
       "FirebaseDatabase.net >= 4.2.0",
       "Google.Cloud.Firestore >= 3.9.0",
-      "LiteDB >= 5.0.11",
+      "LiteDB >= 5.0.12",
       "Microsoft.AspNetCore.OpenApi >= 7.0.0",
       "Swashbuckle.AspNetCore >= 7.1.0"
     ]
@@ -2257,7 +2257,7 @@
           },
           "LiteDB": {
             "target": "Package",
-            "version": "[5.0.11, )"
+            "version": "[5.0.12, )"
           },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
@@ -2296,7 +2296,7 @@
       "code": "NU1904",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'LiteDB' 5.0.11 has a known critical severity vulnerability, https://github.com/advisories/GHSA-3x49-g6rc-c284",
+      "message": "Package 'LiteDB' 5.0.12 has a known critical severity vulnerability, https://github.com/advisories/GHSA-3x49-g6rc-c284",
       "libraryId": "LiteDB",
       "targetGraphs": [
         "net7.0"

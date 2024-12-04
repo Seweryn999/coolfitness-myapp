@@ -65,7 +65,7 @@
             },
             "LiteDB": {
               "target": "Package",
-              "version": "[5.0.11, )"
+              "version": "[5.0.12, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
