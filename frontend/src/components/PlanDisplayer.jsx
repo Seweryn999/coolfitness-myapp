@@ -7,13 +7,13 @@ function PlanDisplayer({ formData }) {
 
   useEffect(() => {
     const fetchPlan = async () => {
-      setLoading(true);
-      setError(null); // Resetowanie błędów
-      setPlan(null); // Resetowanie poprzedniego planu
-
-      console.log("Wysyłanie danych do backendu:", formData);
-
       try {
+        setLoading(true);
+        setError(null); // Resetowanie błędów
+        setPlan(null); // Resetowanie poprzedniego planu
+
+        console.log("Wysyłanie danych do backendu:", formData);
+
         // Walidacja danych formularza
         if (
           !formData ||
@@ -40,21 +40,15 @@ function PlanDisplayer({ formData }) {
 
         console.log("Status odpowiedzi backendu:", response.status);
 
-        const textResponse = await response.text();
-        console.log("Odpowiedź tekstowa z backendu:", textResponse);
-
         if (!response.ok) {
-          const errorMessage = JSON.parse(textResponse);
-          console.error("Błąd odpowiedzi: ", errorMessage.message);
+          const errorMessage = await response.json();
           throw new Error(
             `Błąd HTTP! Status: ${response.status} - ${errorMessage.message}`
           );
         }
 
-        // Parsowanie odpowiedzi z backendu
-        const data = JSON.parse(textResponse);
+        const data = await response.json();
         console.log("Odebrane dane z backendu:", data);
-
         setPlan(data); // Przechowywanie planu w stanie
       } catch (err) {
         console.error("Błąd podczas pobierania planu:", err);
@@ -85,14 +79,12 @@ function PlanDisplayer({ formData }) {
     <div>
       <h2>Twój Plan Treningowy</h2>
       <div>
-        <h3>Cel: {plan.goal}</h3>{" "}
-        {/* Zmieniono na 'goal' zgodnie z odpowiedzią */}
-        <h3>Intensywność: {plan.intensity}</h3> {/* Zmieniono na 'intensity' */}
-        <h3>Czas trwania: {plan.duration} minut</h3>{" "}
-        {/* Zmieniono na 'duration' */}
+        <h3>Cel: {plan.goal}</h3>
+        <h3>Intensywność: {plan.intensity}</h3>
+        <h3>Czas trwania: {plan.duration} minut</h3>
         <div>
           <h4>Plan treningowy:</h4>
-          <p>{plan.planDetails}</p> {/* Wyświetlanie detali planu */}
+          <pre>{plan.planDetails}</pre>
         </div>
       </div>
     </div>

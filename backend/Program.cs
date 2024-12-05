@@ -3,12 +3,16 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using CoolFitnessBackend.Services;
-using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Ustawienie portu, na którym działa aplikacja
 builder.WebHost.UseUrls("http://localhost:5000");
 
+// Dodanie kontrolerów do serwera
+builder.Services.AddControllers();
+
+// Dodanie Swaggera (dokumentacja API)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -20,19 +24,10 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-builder.Services.AddSingleton<PlanGenerator>(provider =>
-{
-    var env = provider.GetRequiredService<IHostEnvironment>();
-    var jsonFilePath = Path.Combine(env.ContentRootPath, "exercises.json");
+// Dodanie generatora planów
+builder.Services.AddSingleton<PlanGenerator>();
 
-    if (!File.Exists(jsonFilePath))
-    {
-        Console.WriteLine($"File exercises.json not found at: {jsonFilePath}");
-    }
-
-    return new PlanGenerator(jsonFilePath);
-});
-
+// Konfiguracja CORS (dopuszczenie połączeń z frontendu)
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policyBuilder =>
@@ -44,6 +39,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// Włączenie Swaggera tylko w środowisku deweloperskim
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -53,44 +49,10 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseCors("AllowFrontend");
+app.UseCors("AllowFrontend"); // Włączenie polityki CORS
+app.UseAuthorization();
 
-app.MapGet("/", () => "Welcome to the CoolFitness API!");
-
-app.MapPost("/api/plan/generate", async (UserPreferences preferences, PlanGenerator generator) =>
-{
-    try
-    {
-        if (string.IsNullOrEmpty(preferences.Goal) || preferences.Duration <= 0)
-        {
-            return Results.Json(new { message = "Invalid data." }, statusCode: 400);
-        }
-
-        var plan = generator.GeneratePlan(preferences);
-
-        return Results.Ok(plan);
-    }
-    catch (Exception ex)
-    {
-        return Results.Json(new { message = "Server error.", details = ex.Message }, statusCode: 500);
-    }
-})
-.WithName("GeneratePlan")
-.WithTags("Fitness Plan");
+// Mapowanie kontrolerów
+app.MapControllers();
 
 app.Run();
-
-public class UserPreferences
-{
-    public string Goal { get; set; } = string.Empty;
-    public string Intensity { get; set; } = string.Empty;
-    public int Duration { get; set; }
-}
-
-public class FitnessPlan
-{
-    public string Goal { get; set; } = string.Empty;
-    public string Intensity { get; set; } = string.Empty;
-    public int Duration { get; set; }
-    public string PlanDetails { get; set; } = string.Empty;
-}
