@@ -1,41 +1,43 @@
-/* Ogólne style */
+/* General styles */
 body {
-  font-family: "Arial", sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+  font-family: "Segoe UI", sans-serif; /* Clean, modern font */
+  background-color: #f7f7f7; /* Light background color */
+  color: #444; /* Softer text color */
   margin: 0;
   padding: 0;
 }
 
-/* Główne kontener aplikacji */
+/* Main app container */
 .app-container {
   text-align: center;
-  padding: 20px;
+  padding: 25px;
   background-color: #fff;
   max-width: 900px;
-  margin: 30px auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 40px auto;
+  border-radius: 12px; /* Smooth rounded corners */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); /* Subtle shadow */
 }
 
-/* Nagłówki */
+/* Header styles */
 .app-header {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .app-title {
-  font-size: 36px;
-  color: #007bff;
+  font-size: 34px; /* Moderately large, but not overwhelming */
+  color: #333; /* Neutral dark color */
   margin: 0;
+  font-weight: 600; /* Light boldness for emphasis */
 }
 
 .app-subtitle {
-  font-size: 20px;
-  color: #555;
+  font-size: 18px;
+  color: #666; /* Slightly lighter gray for contrast */
   margin: 10px 0;
 }
 
-/* Sekcja główna */
+/* Main section */
 main {
   margin-top: 20px;
+  padding: 15px;
 }
