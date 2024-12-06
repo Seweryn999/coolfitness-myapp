@@ -7,7 +7,7 @@ using CoolFitnessBackend.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Ustawienie portu, na którym działa aplikacja
-builder.WebHost.UseUrls("http://localhost:5000");
+builder.WebHost.UseUrls("https://localhost:5000");
 
 // Dodanie kontrolerów do serwera
 builder.Services.AddControllers();
@@ -31,7 +31,7 @@ builder.Services.AddSingleton<PlanGenerator>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policyBuilder =>
-        policyBuilder.WithOrigins("http://localhost:5173")
+        policyBuilder.WithOrigins("https://localhost:5173")
                      .AllowAnyHeader()
                      .AllowAnyMethod()
                      .AllowCredentials());

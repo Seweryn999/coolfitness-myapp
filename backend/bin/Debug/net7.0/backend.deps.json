@@ -12,7 +12,7 @@
           "FirebaseAdmin": "3.1.0",
           "FirebaseDatabase.net": "4.2.0",
           "Google.Cloud.Firestore": "3.9.0",
-          "LiteDB": "5.0.12",
+          "LiteDB": "5.0.21",
           "Microsoft.AspNetCore.OpenApi": "7.0.0",
           "Swashbuckle.AspNetCore": "7.1.0"
         },
@@ -47,7 +47,7 @@
       },
       "FirebaseDatabase.net/4.2.0": {
         "dependencies": {
-          "LiteDB": "5.0.12",
+          "LiteDB": "5.0.21",
           "Newtonsoft.Json": "13.0.3",
           "System.Reactive": "4.0.0"
         },
@@ -246,11 +246,14 @@
           }
         }
       },
-      "LiteDB/5.0.12": {
+      "LiteDB/5.0.21": {
+        "dependencies": {
+          "System.Buffers": "4.5.1"
+        },
         "runtime": {
           "lib/netstandard2.0/LiteDB.dll": {
-            "assemblyVersion": "5.0.12.0",
-            "fileVersion": "5.0.12.0"
+            "assemblyVersion": "5.0.21.0",
+            "fileVersion": "5.0.21.0"
           }
         }
       },
@@ -383,6 +386,7 @@
           }
         }
       },
+      "System.Buffers/4.5.1": {},
       "System.CodeDom/7.0.0": {
         "runtime": {
           "lib/net7.0/System.CodeDom.dll": {
@@ -604,12 +608,12 @@
       "path": "grpc.net.common/2.66.0",
       "hashPath": "grpc.net.common.2.66.0.nupkg.sha512"
     },
-    "LiteDB/5.0.12": {
+    "LiteDB/5.0.21": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-HaOjSIGS9BRm7dw42qcHd5NGYl5wdjsFB31pImt3QQNLKUNEmRAr7ADos5VsujwBc9c4otJgb+G6NA4MlzKyAw==",
-      "path": "litedb/5.0.12",
-      "hashPath": "litedb.5.0.12.nupkg.sha512"
+      "sha512": "sha512-ykJ7ffFl7P9YQKR/PLci6zupiLrsSCNkOTiw6OtzntH7d2kCYp5L1+3a/pksKgTEHcJBoPXFtg7VZSGVBseN9w==",
+      "path": "litedb/5.0.21",
+      "hashPath": "litedb.5.0.21.nupkg.sha512"
     },
     "Microsoft.AspNetCore.OpenApi/7.0.0": {
       "type": "package",
@@ -736,6 +740,13 @@
       "sha512": "sha512-Tn9+gbG2wGekFDcm1+XQXPZoSZWOHn3DiEGaEw3/SMCtKdhkYiejoKpmTzZueKOBQf0Lzgvxs6Lss0WObN0RPA==",
       "path": "swashbuckle.aspnetcore.swaggerui/7.1.0",
       "hashPath": "swashbuckle.aspnetcore.swaggerui.7.1.0.nupkg.sha512"
+    },
+    "System.Buffers/4.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
+      "path": "system.buffers/4.5.1",
+      "hashPath": "system.buffers.4.5.1.nupkg.sha512"
     },
     "System.CodeDom/7.0.0": {
       "type": "package",
