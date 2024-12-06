@@ -1,32 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 function PlanDisplayer({ formData }) {
-  const [plan, setPlan] = useState(null); // Przechowywanie planu
-  const [loading, setLoading] = useState(false); // Status ładowania
-  const [error, setError] = useState(null); // Obsługa błędów
+  const [plans, setPlans] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchPlan = async () => {
+    const fetchPlans = async () => {
       try {
         setLoading(true);
-        setError(null); // Resetowanie błędów
-        setPlan(null); // Resetowanie poprzedniego planu
-
-        console.log("Wysyłanie danych do backendu:", formData);
-
-        // Walidacja danych formularza
-        if (
-          !formData ||
-          !formData.Goal ||
-          !formData.Intensity ||
-          !formData.Duration
-        ) {
-          throw new Error(
-            "Nieprawidłowe dane formularza. Upewnij się, że wszystkie pola są wypełnione."
-          );
-        }
-
-        // Wysłanie żądania do backendu
         const response = await fetch(
           "http://localhost:5000/api/plan/generate",
           {
@@ -38,66 +20,46 @@ function PlanDisplayer({ formData }) {
           }
         );
 
-        console.log("Status odpowiedzi backendu:", response.status);
-
         if (!response.ok) {
-          const errorMessage = await response.json();
-          throw new Error(
-            `Błąd HTTP! Status: ${response.status} - ${errorMessage.message}`
-          );
+          throw new Error("Failed to fetch plans.");
         }
 
         const data = await response.json();
-        console.log("Odebrane dane z backendu:", data);
-        setPlan(data.plans[0]); // Przechowywanie pierwszego planu z listy
+        setPlans(data.plans);
       } catch (err) {
-        console.error("Błąd podczas pobierania planu:", err);
-        setError(err.message || "Nie udało się pobrać planu treningowego.");
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
-    if (formData) {
-      fetchPlan();
-    }
+    if (formData) fetchPlans();
   }, [formData]);
 
-  if (loading) {
-    return <div>Ładowanie...</div>;
-  }
-
-  if (error) {
-    return <div>Błąd: {error}</div>;
-  }
-
-  if (!plan) {
-    return <div>Brak planu. Podaj poprawne dane formularza.</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <div>
-      <h2>Twój Plan Treningowy</h2>
-      <div>
-        <h3>Poziom zaawansowania: {plan.experienceLevel}</h3>
-        <h3>Grupa mięśniowa: {plan.muscleGroup}</h3>
-        <div>
-          <h4>Plan treningowy:</h4>
-          {plan.plan.map((day, index) => (
-            <div key={index}>
-              <h5>Dzień {day.day}</h5>
+      <h2>Welcome, {formData.Name}! Here are your workout plans:</h2>
+      {plans.map((plan, index) => (
+        <div key={index}>
+          <h3>Plan {index + 1}</h3>
+          {plan.plan.map((workout, workoutIndex) => (
+            <div key={workoutIndex}>
+              <h4>Workout {workout.workout}</h4>
               <ul>
-                {day.exercises.map((exercise, idx) => (
+                {workout.exercises.map((exercise, idx) => (
                   <li key={idx}>
-                    {exercise.name}: {exercise.reps} powtórzeń, {exercise.sets}{" "}
-                    serie
+                    {exercise.name}: {exercise.reps || exercise.duration} |{" "}
+                    {exercise.sets} sets
                   </li>
                 ))}
               </ul>
             </div>
           ))}
         </div>
-      </div>
+      ))}
     </div>
   );
 }

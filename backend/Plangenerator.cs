@@ -7,42 +7,67 @@ namespace CoolFitnessBackend.Services
     {
         public WorkoutPlansWrapper GeneratePlan(UserPreferences preferences)
         {
-            // Na podstawie preferencji generujemy przykładowy plan
+            // Generowanie przykładowego planu treningowego na podstawie preferencji użytkownika
             var workoutPlan = new WorkoutPlan
             {
                 ExperienceLevel = preferences.Intensity, // np. "Intermediate"
                 MuscleGroup = preferences.Goal,         // np. "Legs"
-                Plan = new List<WorkoutDay>
-                {
-                    new WorkoutDay
-                    {
-                        Day = 1,
-                        Exercises = new List<Exercise>
-                        {
-                            new Exercise { Name = "Squat", Reps = "12-15", Sets = "4", Duration = "N/A" },
-                            new Exercise { Name = "Leg Press", Reps = "10-12", Sets = "3", Duration = "N/A" }
-                        }
-                    },
-                    new WorkoutDay
-                    {
-                        Day = 2,
-                        Exercises = new List<Exercise>
-                        {
-                            new Exercise { Name = "Lunges", Reps = "10-12", Sets = "3", Duration = "N/A" },
-                            new Exercise { Name = "Deadlift", Reps = "8-10", Sets = "3", Duration = "N/A" }
-                        }
-                    }
-                }
+                Plan = GenerateWorkoutDays(preferences)
             };
 
             return new WorkoutPlansWrapper { Plans = new List<WorkoutPlan> { workoutPlan } };
         }
+
+        private List<WorkoutDay> GenerateWorkoutDays(UserPreferences preferences)
+        {
+            var workoutDays = new List<WorkoutDay>();
+
+            if (preferences.Goal.ToLower() == "legs")
+            {
+                workoutDays.Add(new WorkoutDay
+                {
+                    Workout = 1,
+                    Exercises = new List<Exercise>
+                    {
+                        new Exercise { Name = "Bodyweight Squats", Reps = "15", Sets = "3", Duration = "N/A" },
+                        new Exercise { Name = "Glute Bridge", Reps = "12", Sets = "3", Duration = "N/A" },
+                        new Exercise { Name = "Calf Raises", Reps = "15", Sets = "3", Duration = "N/A" }
+                    }
+                });
+
+                workoutDays.Add(new WorkoutDay
+                {
+                    Workout = 2,
+                    Exercises = new List<Exercise>
+                    {
+                        new Exercise { Name = "Lunges", Reps = "12", Sets = "3", Duration = "N/A" },
+                        new Exercise { Name = "Side Leg Raises", Reps = "15", Sets = "3", Duration = "N/A" },
+                        new Exercise { Name = "Step-Ups", Reps = "12", Sets = "3", Duration = "N/A" }
+                    }
+                });
+            }
+
+            if (preferences.Intensity.ToLower() == "advanced")
+            {
+                workoutDays.Add(new WorkoutDay
+                {
+                    Workout = 3,
+                    Exercises = new List<Exercise>
+                    {
+                        new Exercise { Name = "Deadlifts", Reps = "6", Sets = "4", Duration = "N/A" },
+                        new Exercise { Name = "Power Cleans", Reps = "5", Sets = "3", Duration = "N/A" },
+                        new Exercise { Name = "Barbell Squats", Reps = "6", Sets = "4", Duration = "N/A" }
+                    }
+                });
+            }
+
+            return workoutDays;
+        }
     }
 
-    // Definicje pomocnicze
     public class WorkoutDay
     {
-        public int Day { get; set; }
+        public int Workout { get; set; }
         public required List<Exercise> Exercises { get; set; } = new();
     }
 

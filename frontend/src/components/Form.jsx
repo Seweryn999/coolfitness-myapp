@@ -16,31 +16,37 @@ const database = getDatabase(app);
 
 function Form({ onSubmit }) {
   const [formData, setFormData] = useState({
-    Goal: "", // Cel planu
-    Intensity: "", // Intensywność (np. "upper body", "all")
-    Duration: "", // Czas trwania planu w minutach
+    Name: "",
+    Gender: "",
+    Goal: "",
+    Intensity: "",
+    Duration: "",
+    ExperienceLevel: "",
   });
 
   const [notification, setNotification] = useState("");
 
-  // Obsługuje zmiany w formularzu
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Walidacja formularza
   const validateFormData = (data) => {
-    if (!data.Goal || !data.Intensity || !data.Duration) {
+    if (
+      !data.Name ||
+      !data.Gender ||
+      !data.Goal ||
+      !data.Intensity ||
+      !data.Duration ||
+      !data.ExperienceLevel
+    ) {
       return "Please fill in all the fields.";
     }
     return null;
   };
 
-  // Obsługuje wysyłanie formularza
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const validationError = validateFormData(formData);
     if (validationError) {
       setNotification(validationError);
@@ -50,13 +56,8 @@ function Form({ onSubmit }) {
     const entriesRef = ref(database, "Entries");
     push(entriesRef, formData)
       .then(() => {
-        setNotification("Thank you for signing up! We’ll be in touch soon.");
-        setFormData({
-          Goal: "",
-          Intensity: "",
-          Duration: "",
-        });
-        onSubmit(formData); // Przekazanie danych do PlanDisplayer
+        setNotification("Thank you for signing up! Here is your plan.");
+        onSubmit(formData);
       })
       .catch((error) => {
         setNotification("Something went wrong. Please try again.");
@@ -67,28 +68,63 @@ function Form({ onSubmit }) {
   return (
     <div className="form-container">
       <p>Your personal trainer will create a workout plan just for you.</p>
-      <p>Please fill out the form:</p>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="Goal">Goal (e.g., weight loss, muscle gain):</label>
+          <label htmlFor="Name">Name:</label>
+          <input
+            id="Name"
+            type="text"
+            name="Name"
+            placeholder="Your Name"
+            value={formData.Name}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="Gender">Gender:</label>
+          <select
+            id="Gender"
+            name="Gender"
+            value={formData.Gender}
+            onChange={handleChange}
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="ExperienceLevel">Experience Level:</label>
+          <select
+            id="ExperienceLevel"
+            name="ExperienceLevel"
+            value={formData.ExperienceLevel}
+            onChange={handleChange}
+          >
+            <option value="">Select Level</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="Goal">Goal:</label>
           <input
             id="Goal"
             type="text"
             name="Goal"
-            placeholder="Goal"
+            placeholder="e.g., weight loss"
             value={formData.Goal}
             onChange={handleChange}
           />
         </div>
         <div>
-          <label htmlFor="Intensity">
-            Intensity (e.g., upper body, full body):
-          </label>
+          <label htmlFor="Intensity">Intensity:</label>
           <input
             id="Intensity"
             type="text"
             name="Intensity"
-            placeholder="Intensity"
+            placeholder="e.g., full body"
             value={formData.Intensity}
             onChange={handleChange}
           />
