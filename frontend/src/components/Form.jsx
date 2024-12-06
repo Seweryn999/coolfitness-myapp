@@ -115,18 +115,18 @@ function Form({ onSubmit }) {
             id="Goal"
             type="text"
             name="Goal"
-            placeholder="e.g., weight loss"
+            placeholder="Weight loss, Muscle Gain"
             value={formData.Goal}
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="Intensity">Intensity:</label>
+          <label htmlFor="Intensity">Muscle Group</label>
           <input
             id="Intensity"
             type="text"
             name="Intensity"
-            placeholder="e.g., full body"
+            placeholder="Full body, Upper body, Legs"
             value={formData.Intensity}
             onChange={handleChange}
           />
