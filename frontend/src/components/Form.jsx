@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { getDatabase, ref, push } from "firebase/database";
 import { initializeApp } from "firebase/app";
-import "./styles/Form.css";
+import "./styles/Form.css"; // Import stylów
 
 const firebaseConfig = {
   authDomain: "coolfitness-f1486.firebaseapp.com",
@@ -67,9 +67,11 @@ function Form({ onSubmit }) {
 
   return (
     <div className="form-container">
-      <p>Your personal trainer will create a workout plan just for you.</p>
+      <p className="form-intro">
+        Your personal trainer will create a workout plan just for you.
+      </p>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label htmlFor="Name">Name:</label>
           <input
             id="Name"
@@ -80,7 +82,7 @@ function Form({ onSubmit }) {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="Gender">Gender:</label>
           <select
             id="Gender"
@@ -93,7 +95,7 @@ function Form({ onSubmit }) {
             <option value="Female">Female</option>
           </select>
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="ExperienceLevel">Experience Level:</label>
           <select
             id="ExperienceLevel"
@@ -107,7 +109,7 @@ function Form({ onSubmit }) {
             <option value="Advanced">Advanced</option>
           </select>
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="Goal">Goal:</label>
           <input
             id="Goal"
@@ -118,7 +120,7 @@ function Form({ onSubmit }) {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="Intensity">Intensity:</label>
           <input
             id="Intensity"
@@ -129,7 +131,7 @@ function Form({ onSubmit }) {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="Duration">Duration (in minutes):</label>
           <input
             id="Duration"
@@ -140,7 +142,9 @@ function Form({ onSubmit }) {
             onChange={handleChange}
           />
         </div>
-        <button type="submit">Submit</button>
+        <button className="submit-button" type="submit">
+          Submit
+        </button>
       </form>
       {notification && <p className="notification">{notification}</p>}
     </div>

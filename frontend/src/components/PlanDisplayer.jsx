@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./styles/PlanDisplayer.css"; // Dodajemy import stylów
 
 function PlanDisplayer({ formData }) {
   const [plans, setPlans] = useState([]);
@@ -36,23 +37,27 @@ function PlanDisplayer({ formData }) {
     if (formData) fetchPlans();
   }, [formData]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading) return <div className="loading">Loading...</div>;
+  if (error) return <div className="error">Error: {error}</div>;
 
   return (
-    <div>
-      <h2>Welcome, {formData.Name}! Here are your workout plans:</h2>
+    <div className="container">
+      <h2 className="welcome">
+        Welcome, <span className="username">{formData.Name}</span>! Here are
+        your workout plans:
+      </h2>
       {plans.map((plan, index) => (
-        <div key={index}>
-          <h3>Plan {index + 1}</h3>
+        <div key={index} className="plan-card">
+          <h3 className="plan-title">Plan {index + 1}</h3>
           {plan.plan.map((workout, workoutIndex) => (
-            <div key={workoutIndex}>
-              <h4>Workout {workout.workout}</h4>
-              <ul>
+            <div key={workoutIndex} className="workout-day">
+              <h4 className="workout-title">Workout {workout.workout}</h4>
+              <ul className="exercise-list">
                 {workout.exercises.map((exercise, idx) => (
-                  <li key={idx}>
-                    {exercise.name}: {exercise.reps || exercise.duration} |{" "}
-                    {exercise.sets} sets
+                  <li key={idx} className="exercise-item">
+                    <span className="exercise-name">{exercise.name}:</span>{" "}
+                    {exercise.reps || exercise.duration} |{" "}
+                    <span className="exercise-sets">{exercise.sets} sets</span>
                   </li>
                 ))}
               </ul>
