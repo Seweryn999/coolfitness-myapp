@@ -49,7 +49,7 @@ function PlanDisplayer({ formData }) {
 
         const data = await response.json();
         console.log("Odebrane dane z backendu:", data);
-        setPlan(data); // Przechowywanie planu w stanie
+        setPlan(data.plans[0]); // Przechowywanie pierwszego planu z listy
       } catch (err) {
         console.error("Błąd podczas pobierania planu:", err);
         setError(err.message || "Nie udało się pobrać planu treningowego.");
@@ -79,12 +79,23 @@ function PlanDisplayer({ formData }) {
     <div>
       <h2>Twój Plan Treningowy</h2>
       <div>
-        <h3>Cel: {plan.goal}</h3>
-        <h3>Intensywność: {plan.intensity}</h3>
-        <h3>Czas trwania: {plan.duration} minut</h3>
+        <h3>Poziom zaawansowania: {plan.experienceLevel}</h3>
+        <h3>Grupa mięśniowa: {plan.muscleGroup}</h3>
         <div>
           <h4>Plan treningowy:</h4>
-          <pre>{plan.planDetails}</pre>
+          {plan.plan.map((day, index) => (
+            <div key={index}>
+              <h5>Dzień {day.day}</h5>
+              <ul>
+                {day.exercises.map((exercise, idx) => (
+                  <li key={idx}>
+                    {exercise.name}: {exercise.reps} powtórzeń, {exercise.sets}{" "}
+                    serie
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </div>

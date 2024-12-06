@@ -43,26 +43,26 @@ namespace CoolFitnessBackend.Services
     public class WorkoutDay
     {
         public int Day { get; set; }
-        public List<Exercise> Exercises { get; set; }
+        public required List<Exercise> Exercises { get; set; } = new();
     }
 
     public class Exercise
     {
-        public string Name { get; set; }
-        public string Reps { get; set; }
-        public string Sets { get; set; }
-        public string Duration { get; set; }
+        public required string Name { get; set; } = string.Empty;
+        public required string Reps { get; set; } = string.Empty;
+        public required string Sets { get; set; } = string.Empty;
+        public required string Duration { get; set; } = string.Empty;
     }
 
     public class WorkoutPlan
     {
-        public string ExperienceLevel { get; set; }
-        public string MuscleGroup { get; set; }
-        public List<WorkoutDay> Plan { get; set; }
+        public required string ExperienceLevel { get; set; } = string.Empty;
+        public required string MuscleGroup { get; set; } = string.Empty;
+        public required List<WorkoutDay> Plan { get; set; } = new();
     }
 
     public class WorkoutPlansWrapper
     {
-        public List<WorkoutPlan> Plans { get; set; }
+        public required List<WorkoutPlan> Plans { get; set; } = new();
     }
 }
