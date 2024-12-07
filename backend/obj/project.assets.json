@@ -322,8 +322,11 @@
           }
         }
       },
-      "LiteDB/5.0.12": {
+      "LiteDB/5.0.21": {
         "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.5.1"
+        },
         "compile": {
           "lib/netstandard2.0/LiteDB.dll": {
             "related": ".xml"
@@ -591,6 +594,15 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "System.Buffers/4.5.1": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
+        }
       },
       "System.CodeDom/7.0.0": {
         "type": "package",
@@ -1185,10 +1197,10 @@
         "packageIcon.png"
       ]
     },
-    "LiteDB/5.0.12": {
-      "sha512": "HaOjSIGS9BRm7dw42qcHd5NGYl5wdjsFB31pImt3QQNLKUNEmRAr7ADos5VsujwBc9c4otJgb+G6NA4MlzKyAw==",
+    "LiteDB/5.0.21": {
+      "sha512": "ykJ7ffFl7P9YQKR/PLci6zupiLrsSCNkOTiw6OtzntH7d2kCYp5L1+3a/pksKgTEHcJBoPXFtg7VZSGVBseN9w==",
       "type": "package",
-      "path": "litedb/5.0.12",
+      "path": "litedb/5.0.21",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1201,7 +1213,7 @@
         "lib/netstandard1.3/LiteDB.xml",
         "lib/netstandard2.0/LiteDB.dll",
         "lib/netstandard2.0/LiteDB.xml",
-        "litedb.5.0.12.nupkg.sha512",
+        "litedb.5.0.21.nupkg.sha512",
         "litedb.nuspec"
       ]
     },
@@ -1844,6 +1856,37 @@
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
     },
+    "System.Buffers/4.5.1": {
+      "sha512": "Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
+      "type": "package",
+      "path": "system.buffers/4.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Buffers.dll",
+        "lib/net461/System.Buffers.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.1/System.Buffers.dll",
+        "lib/netstandard1.1/System.Buffers.xml",
+        "lib/netstandard2.0/System.Buffers.dll",
+        "lib/netstandard2.0/System.Buffers.xml",
+        "lib/uap10.0.16299/_._",
+        "ref/net45/System.Buffers.dll",
+        "ref/net45/System.Buffers.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.1/System.Buffers.dll",
+        "ref/netstandard1.1/System.Buffers.xml",
+        "ref/netstandard2.0/System.Buffers.dll",
+        "ref/netstandard2.0/System.Buffers.xml",
+        "ref/uap10.0.16299/_._",
+        "system.buffers.4.5.1.nupkg.sha512",
+        "system.buffers.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.CodeDom/7.0.0": {
       "sha512": "GLltyqEsE5/3IE+zYRP5sNa1l44qKl9v+bfdMcwg+M9qnQf47wK3H0SUR/T+3N4JEQXF3vV4CSuuo0rsg+nq2A==",
       "type": "package",
@@ -2188,7 +2231,7 @@
       "FirebaseAdmin >= 3.1.0",
       "FirebaseDatabase.net >= 4.2.0",
       "Google.Cloud.Firestore >= 3.9.0",
-      "LiteDB >= 5.0.12",
+      "LiteDB >= 5.0.21",
       "Microsoft.AspNetCore.OpenApi >= 7.0.0",
       "Swashbuckle.AspNetCore >= 7.1.0"
     ]
@@ -2257,7 +2300,7 @@
           },
           "LiteDB": {
             "target": "Package",
-            "version": "[5.0.12, )"
+            "version": "[5.0.21, )"
           },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
@@ -2290,17 +2333,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1904",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Pakiet „LiteDB” 5.0.12 ma znane krytyczna luki w zabezpieczeniach o ważności, https://github.com/advisories/GHSA-3x49-g6rc-c284",
-      "libraryId": "LiteDB",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  }
 }
