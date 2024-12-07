@@ -6,8 +6,13 @@ using CoolFitnessBackend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+<<<<<<< HEAD
 // Wymuszenie uruchomienia na https
 builder.WebHost.UseUrls("https://localhost:5000");  // Ustawienie protokołu https
+=======
+// Ustawienie portu, na którym działa aplikacja
+builder.WebHost.UseUrls("https://localhost:5000");
+>>>>>>> 5b60409c81290a28b940a6dc6b5ad12252dc7bc5
 
 // Dodanie kontrolerów do serwera
 builder.Services.AddControllers();
@@ -31,7 +36,11 @@ builder.Services.AddSingleton<PlanGenerator>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policyBuilder =>
+<<<<<<< HEAD
         policyBuilder.WithOrigins("https://localhost:5173")  // Upewnij się, że frontend używa https
+=======
+        policyBuilder.WithOrigins("https://localhost:5173")
+>>>>>>> 5b60409c81290a28b940a6dc6b5ad12252dc7bc5
                      .AllowAnyHeader()
                      .AllowAnyMethod()
                      .AllowCredentials());
