@@ -11,11 +11,7 @@ function PlanDisplayer({ formData }) {
       try {
         setLoading(true);
         const response = await fetch(
-<<<<<<< HEAD
           "http://localhost:5000/api/plan/generate",
-=======
-          "https://localhost:5000/api/plan/generate",
->>>>>>> 030072258cd07e2fcf4ddae6ace2e53f1040193d
           {
             method: "POST",
             headers: {

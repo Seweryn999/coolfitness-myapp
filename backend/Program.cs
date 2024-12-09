@@ -3,21 +3,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using CoolFitnessBackend.Services;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
-<<<<<<< HEAD
-// Wymuszenie uruchomienia na https
-builder.WebHost.UseUrls("https://localhost:5000");  // Ustawienie protokołu https
-=======
-// Ustawienie portu, na którym działa aplikacja
-builder.WebHost.UseUrls("https://localhost:5000");
->>>>>>> 5b60409c81290a28b940a6dc6b5ad12252dc7bc5
+builder.WebHost.UseUrls("http://localhost:5000");
 
-// Dodanie kontrolerów do serwera
-builder.Services.AddControllers();
-
-// Dodanie Swaggera (dokumentacja API)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -29,18 +20,23 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// Dodanie generatora planów
-builder.Services.AddSingleton<PlanGenerator>();
+builder.Services.AddSingleton<PlanGenerator>(provider =>
+{
+    var env = provider.GetRequiredService<IHostEnvironment>();
+    var jsonFilePath = Path.Combine(env.ContentRootPath, "exercises.json");
 
-// Konfiguracja CORS (dopuszczenie połączeń z frontendu)
+    if (!File.Exists(jsonFilePath))
+    {
+        Console.WriteLine($"File exercises.json not found at: {jsonFilePath}");
+    }
+
+    return new PlanGenerator(jsonFilePath);
+});
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policyBuilder =>
-<<<<<<< HEAD
-        policyBuilder.WithOrigins("https://localhost:5173")  // Upewnij się, że frontend używa https
-=======
-        policyBuilder.WithOrigins("https://localhost:5173")
->>>>>>> 5b60409c81290a28b940a6dc6b5ad12252dc7bc5
+        policyBuilder.WithOrigins("http://localhost:5173")
                      .AllowAnyHeader()
                      .AllowAnyMethod()
                      .AllowCredentials());
@@ -48,7 +44,6 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Włączenie Swaggera tylko w środowisku deweloperskim
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -58,10 +53,44 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseCors("AllowFrontend"); // Włączenie polityki CORS
-app.UseAuthorization();
+app.UseCors("AllowFrontend");
 
-// Mapowanie kontrolerów
-app.MapControllers();
+app.MapGet("/", () => "Welcome to the CoolFitness API!");
+
+app.MapPost("/api/plan/generate", async (UserPreferences preferences, PlanGenerator generator) =>
+{
+    try
+    {
+        if (string.IsNullOrEmpty(preferences.Goal) || preferences.Duration <= 0)
+        {
+            return Results.Json(new { message = "Invalid data." }, statusCode: 400);
+        }
+
+        var plan = generator.GeneratePlan(preferences);
+
+        return Results.Ok(plan);
+    }
+    catch (Exception ex)
+    {
+        return Results.Json(new { message = "Server error.", details = ex.Message }, statusCode: 500);
+    }
+})
+.WithName("GeneratePlan")
+.WithTags("Fitness Plan");
 
 app.Run();
+
+public class UserPreferences
+{
+    public string Goal { get; set; } = string.Empty;
+    public string Intensity { get; set; } = string.Empty;
+    public int Duration { get; set; }
+}
+
+public class FitnessPlan
+{
+    public string Goal { get; set; } = string.Empty;
+    public string Intensity { get; set; } = string.Empty;
+    public int Duration { get; set; }
+    public string PlanDetails { get; set; } = string.Empty;
+}
