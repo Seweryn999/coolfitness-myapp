@@ -17,16 +17,21 @@ function PlanDisplayer({ formData }) {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(formData),
+            body: JSON.stringify({
+              Goal: formData.Goal,
+              Intensity: formData.Intensity,
+              Duration: parseInt(formData.Duration, 10), // Ensure numeric value
+            }),
           }
         );
 
         if (!response.ok) {
-          throw new Error("Failed to fetch plans.");
+          const errorMessage = await response.text();
+          throw new Error(`Failed to fetch plans: ${errorMessage}`);
         }
 
         const data = await response.json();
-        setPlans(data.plans || []); // Safeguard in case 'plans' is undefined
+        setPlans(data); // Assuming the backend returns the correct JSON structure
       } catch (err) {
         setError(err.message);
       } finally {

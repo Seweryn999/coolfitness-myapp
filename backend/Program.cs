@@ -7,8 +7,7 @@ using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost.UseUrls("http://localhost:5000");
-
+// Dodanie usług do kontenera
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -20,19 +19,22 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+// Rejestracja PlanGenerator jako singleton
 builder.Services.AddSingleton<PlanGenerator>(provider =>
 {
     var env = provider.GetRequiredService<IHostEnvironment>();
     var jsonFilePath = Path.Combine(env.ContentRootPath, "exercises.json");
 
+    // Sprawdzenie, czy plik istnieje
     if (!File.Exists(jsonFilePath))
     {
-        Console.WriteLine($"File exercises.json not found at: {jsonFilePath}");
+        Console.WriteLine($"Plik exercises.json nie został znaleziony w ścieżce: {jsonFilePath}");
     }
 
     return new PlanGenerator(jsonFilePath);
 });
 
+// Dodanie polityki CORS dla frontendowych żądań
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policyBuilder =>
@@ -44,6 +46,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// Włączenie Swagger UI w środowisku deweloperskim
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -53,29 +56,48 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+// Włączenie obsługi CORS
 app.UseCors("AllowFrontend");
 
-app.MapGet("/", () => "Welcome to the CoolFitness API!");
+// Dodanie endpointu głównego / (root), który będzie działał na https://localhost:5000/
+app.MapGet("/", () => "Witaj w aplikacji CoolFitness API!");
 
-app.MapPost("/api/plan/generate", async (CoolFitnessBackend.Services.UserPreferences preferences, PlanGenerator generator) =>
+// Mapowanie endpointów API
+app.MapPost("/api/plan/generate", (UserPreferences preferences, PlanGenerator generator) =>
 {
-    try
-    {
-        if (string.IsNullOrEmpty(preferences.Goal) || preferences.Duration <= 0)
-        {
-            return Results.Json(new { message = "Invalid data." }, statusCode: 400);
-        }
+    // Logowanie otrzymanych danych
+    Console.WriteLine($"Otrzymane dane: {preferences.Goal}, {preferences.Intensity}, {preferences.Duration}");
 
-        var plan = generator.GeneratePlan(preferences);
-
-        return Results.Ok(plan);
-    }
-    catch (Exception ex)
+    // Weryfikacja danych wejściowych
+    if (string.IsNullOrEmpty(preferences.Goal) || preferences.Duration <= 0)
     {
-        return Results.Json(new { message = "Server error.", details = ex.Message }, statusCode: 500);
+        Console.WriteLine("Invalid user preferences provided.");
+        return Results.BadRequest("Invalid user preferences provided.");
     }
+
+    // Generowanie planu treningowego
+    var plan = generator.GeneratePlan(preferences);
+    Console.WriteLine($"Wygenerowany plan: {plan.Goal}, {plan.Intensity}, {plan.Duration}");
+    return Results.Ok(plan);
 })
 .WithName("GeneratePlan")
 .WithTags("Fitness Plan");
 
+// Uruchomienie aplikacji
 app.Run();
+
+// Definicje klas dla użytkownika i planu
+public class UserPreferences
+{
+    public string Goal { get; set; } = string.Empty;      // Added default value
+    public string Intensity { get; set; } = string.Empty; // Added default value
+    public int Duration { get; set; }
+}
+
+public class FitnessPlan
+{
+    public string Goal { get; set; } = string.Empty;         // Added default value
+    public string Intensity { get; set; } = string.Empty;    // Added default value
+    public int Duration { get; set; }
+    public string PlanDetails { get; set; } = string.Empty;  // Added default value
+}
