@@ -1,0 +1,100 @@
+{
+  "workoutPlans": [
+    {
+      "id": 1,
+      "gender": "male",
+      "muscleGroup": "legs",
+      "experienceLevel": "beginner",
+      "plan": [
+        {
+          "workout": 1,
+          "exercises": [
+            { "name": "Bodyweight Squats", "sets": 3, "reps": 12 },
+            { "name": "Glute Bridge", "sets": 3, "reps": 10 },
+            { "name": "Calf Raises", "sets": 3, "reps": 15 }
+          ]
+        },
+        {
+          "workout": 2,
+          "exercises": [
+            { "name": "Lunges", "sets": 3, "reps": 10 },
+            { "name": "Side Leg Raises", "sets": 3, "reps": 15 },
+            { "name": "Step-Ups", "sets": 3, "reps": 12 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "gender": "female",
+      "muscleGroup": "legs",
+      "experienceLevel": "beginner",
+      "plan": [
+        {
+          "workout": 1,
+          "exercises": [
+            { "name": "Bodyweight Squats", "sets": 3, "reps": 15 },
+            { "name": "Glute Bridge", "sets": 4, "reps": 12 },
+            { "name": "Donkey Kicks", "sets": 3, "reps": 15 }
+          ]
+        },
+        {
+          "workout": 2,
+          "exercises": [
+            { "name": "Sumo Squats", "sets": 3, "reps": 10 },
+            { "name": "Side Lunges", "sets": 3, "reps": 12 },
+            { "name": "Hip Thrusts", "sets": 3, "reps": 15 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "gender": "male",
+      "muscleGroup": "upper body",
+      "experienceLevel": "intermediate",
+      "plan": [
+        {
+          "workout": 1,
+          "exercises": [
+            { "name": "Bench Press", "sets": 4, "reps": 8 },
+            { "name": "Push-Ups", "sets": 3, "reps": 12 },
+            { "name": "Dumbbell Rows", "sets": 4, "reps": 10 }
+          ]
+        },
+        {
+          "workout": 2,
+          "exercises": [
+            { "name": "Pull-Ups", "sets": 4, "reps": 8 },
+            { "name": "Shoulder Press", "sets": 3, "reps": 10 },
+            { "name": "Tricep Dips", "sets": 3, "reps": 12 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "gender": "female",
+      "muscleGroup": "full body",
+      "experienceLevel": "advanced",
+      "plan": [
+        {
+          "workout": 1,
+          "exercises": [
+            { "name": "Barbell Squats", "sets": 4, "reps": 6 },
+            { "name": "Deadlifts", "sets": 4, "reps": 6 },
+            { "name": "Overhead Press", "sets": 3, "reps": 8 }
+          ]
+        },
+        {
+          "workout": 2,
+          "exercises": [
+            { "name": "Power Cleans", "sets": 3, "reps": 5 },
+            { "name": "Pull-Ups", "sets": 3, "reps": 8 },
+            { "name": "Push-Ups", "sets": 4, "reps": 12 }
+          ]
+        }
+      ]
+    }
+  ]
+}

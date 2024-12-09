@@ -1,117 +1,93 @@
+using System.Collections.Generic;
 using CoolFitnessBackend.Models;
-using System.Text;  // For StringBuilder
-using System.Text.Json;
 
 namespace CoolFitnessBackend.Services
 {
     public class PlanGenerator
     {
-        private readonly string _jsonFilePath;
-        private readonly List<WorkoutPlan> _workoutPlans;
-
-        // Constructor to initialize PlanGenerator with a JSON file path
-        public PlanGenerator(string jsonFilePath)
+        public WorkoutPlansWrapper GeneratePlan(UserPreferences preferences)
         {
-            _jsonFilePath = jsonFilePath ?? throw new ArgumentNullException(nameof(jsonFilePath));  // Null check
-
-            // Load and deserialize data from the JSON file
-            if (File.Exists(_jsonFilePath))
+            // Generowanie przykładowego planu treningowego na podstawie preferencji użytkownika
+            var workoutPlan = new WorkoutPlan
             {
-                var jsonData = File.ReadAllText(_jsonFilePath);
-                var workoutPlans = JsonSerializer.Deserialize<WorkoutPlansWrapper>(jsonData);
-                _workoutPlans = workoutPlans?.Plans ?? new List<WorkoutPlan>();
-            }
-            else
-            {
-                throw new FileNotFoundException("The workout plan file was not found.", _jsonFilePath);
-            }
-        }
-
-        // Method to generate a fitness plan based on user preferences
-        public FitnessPlan GeneratePlan(UserPreferences preferences)
-        {
-            if (preferences == null) throw new ArgumentNullException(nameof(preferences));  // Null check
-
-            // Find matching plans based on preferences
-            var matchingPlans = _workoutPlans
-                .Where(p => !string.IsNullOrEmpty(p.ExperienceLevel) &&
-                            p.ExperienceLevel.Equals(preferences.Goal, StringComparison.OrdinalIgnoreCase))
-                .Where(p => !string.IsNullOrEmpty(p.MuscleGroup) &&
-                            p.MuscleGroup.Equals(preferences.Intensity, StringComparison.OrdinalIgnoreCase))
-                .ToList();
-
-            if (!matchingPlans.Any())
-            {
-                throw new InvalidOperationException("No matching workout plans found for the given preferences.");
-            }
-
-            // Select a plan based on available data
-            var selectedPlan = matchingPlans.FirstOrDefault();  // Additional criteria can be added here
-
-            if (selectedPlan == null)
-            {
-                throw new InvalidOperationException("Failed to select a workout plan.");
-            }
-
-            // Generate plan details
-            var planDetails = GeneratePlanDetails(selectedPlan);
-
-            return new FitnessPlan
-            {
-                Goal = preferences.Goal ?? "Default Goal",
-                Intensity = preferences.Intensity ?? "Default Intensity",
-                Duration = preferences.Duration,
-                PlanDetails = planDetails
+                ExperienceLevel = preferences.Intensity, // np. "Intermediate"
+                MuscleGroup = preferences.Goal,         // np. "Legs"
+                Plan = GenerateWorkoutDays(preferences)
             };
+
+            return new WorkoutPlansWrapper { Plans = new List<WorkoutPlan> { workoutPlan } };
         }
 
-        // Generate detailed plan information
-        private string GeneratePlanDetails(WorkoutPlan workoutPlan)
+        private List<WorkoutDay> GenerateWorkoutDays(UserPreferences preferences)
         {
-            if (workoutPlan == null) throw new ArgumentNullException(nameof(workoutPlan));  // Null check
+            var workoutDays = new List<WorkoutDay>();
 
-            var details = new StringBuilder();
-
-            foreach (var day in workoutPlan.Plan)
+            if (preferences.Goal.ToLower() == "legs")
             {
-                details.AppendLine($"Day {day.Day}:");
-                foreach (var exercise in day.Exercises)
+                workoutDays.Add(new WorkoutDay
                 {
-                    details.AppendLine($"- {exercise.Name}: {exercise.Sets} sets, {exercise.Reps} reps");
-                }
-                details.AppendLine();
+                    Workout = 1,
+                    Exercises = new List<Exercise>
+                    {
+                        new Exercise { Name = "Bodyweight Squats", Reps = "15", Sets = "3", Duration = "N/A" },
+                        new Exercise { Name = "Glute Bridge", Reps = "12", Sets = "3", Duration = "N/A" },
+                        new Exercise { Name = "Calf Raises", Reps = "15", Sets = "3", Duration = "N/A" }
+                    }
+                });
+
+                workoutDays.Add(new WorkoutDay
+                {
+                    Workout = 2,
+                    Exercises = new List<Exercise>
+                    {
+                        new Exercise { Name = "Lunges", Reps = "12", Sets = "3", Duration = "N/A" },
+                        new Exercise { Name = "Side Leg Raises", Reps = "15", Sets = "3", Duration = "N/A" },
+                        new Exercise { Name = "Step-Ups", Reps = "12", Sets = "3", Duration = "N/A" }
+                    }
+                });
             }
 
-            return details.ToString();
+            if (preferences.Intensity.ToLower() == "advanced")
+            {
+                workoutDays.Add(new WorkoutDay
+                {
+                    Workout = 3,
+                    Exercises = new List<Exercise>
+                    {
+                        new Exercise { Name = "Deadlifts", Reps = "6", Sets = "4", Duration = "N/A" },
+                        new Exercise { Name = "Power Cleans", Reps = "5", Sets = "3", Duration = "N/A" },
+                        new Exercise { Name = "Barbell Squats", Reps = "6", Sets = "4", Duration = "N/A" }
+                    }
+                });
+            }
+
+            return workoutDays;
         }
     }
 
-    // Helper classes for deserialization
-
-    public class WorkoutPlansWrapper
+    public class WorkoutDay
     {
-        public List<WorkoutPlan> Plans { get; set; } = new List<WorkoutPlan>();
-    }
-
-    public class WorkoutPlan
-    {
-        public int Id { get; set; }
-        public string MuscleGroup { get; set; } = string.Empty;
-        public string ExperienceLevel { get; set; } = string.Empty;
-        public List<DayPlan> Plan { get; set; } = new List<DayPlan>();
-    }
-
-    public class DayPlan
-    {
-        public int Day { get; set; }
-        public List<Exercise> Exercises { get; set; } = new List<Exercise>();
+        public int Workout { get; set; }
+        public required List<Exercise> Exercises { get; set; } = new();
     }
 
     public class Exercise
     {
-        public string Name { get; set; } = string.Empty;
-        public int Sets { get; set; }
-        public int Reps { get; set; }
-        public string Duration { get; set; } = string.Empty;
+        public required string Name { get; set; } = string.Empty;
+        public required string Reps { get; set; } = string.Empty;
+        public required string Sets { get; set; } = string.Empty;
+        public required string Duration { get; set; } = string.Empty;
+    }
+
+    public class WorkoutPlan
+    {
+        public required string ExperienceLevel { get; set; } = string.Empty;
+        public required string MuscleGroup { get; set; } = string.Empty;
+        public required List<WorkoutDay> Plan { get; set; } = new();
+    }
+
+    public class WorkoutPlansWrapper
+    {
+        public required List<WorkoutPlan> Plans { get; set; } = new();
     }
 }

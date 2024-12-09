@@ -1,11 +1,20 @@
+<<<<<<< HEAD
 body {
   font-family: "Arial", sans-serif;
   background-color: #f9f9f9;
   color: #333;
+=======
+/* General layout */
+body {
+  font-family: "Segoe UI", sans-serif; /* Clean font for readability */
+  background-color: #f7f7f7; /* Subtle light background */
+  color: #444; /* Text color that’s easy on the eyes */
+>>>>>>> 030072258cd07e2fcf4ddae6ace2e53f1040193d
   margin: 0;
   padding: 0;
 }
 
+<<<<<<< HEAD
 .container {
   max-width: 800px;
   margin: 20px auto;
@@ -55,4 +64,65 @@ body {
   background: #f4f4f4;
   margin: 5px 0;
   padding: 10px;
+=======
+/* Main container */
+.container {
+  max-width: 750px;
+  margin: 30px auto;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); /* Soft shadow for depth */
+}
+
+/* Welcome text */
+.welcome {
+  font-size: 24px; /* Prominent but not overwhelming */
+  margin-bottom: 20px;
+  color: #333; /* Dark gray for clarity */
+}
+
+/* Username style */
+.username {
+  font-weight: normal; /* Lighter font weight */
+  color: #333; /* Neutral dark color */
+}
+
+/* Plan title */
+.plan-title {
+  font-size: 20px;
+  margin: 12px 0;
+  color: #444; /* Dark gray for text contrast */
+}
+
+/* Workout title */
+.workout-title {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #666; /* Lighter gray for subtlety */
+}
+
+/* Plan card styling */
+.plan-card {
+  background-color: #f9f9f9; /* Light background */
+  padding: 18px;
+  margin: 20px 0;
+  border-radius: 10px; /* Smooth rounded edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Soft shadow effect */
+}
+
+/* Exercise list */
+.exercise-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 15px 0;
+}
+
+.exercise-item {
+  background-color: #fafafa;
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+>>>>>>> 030072258cd07e2fcf4ddae6ace2e53f1040193d
 }

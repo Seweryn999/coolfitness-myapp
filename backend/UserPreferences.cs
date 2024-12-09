@@ -2,8 +2,8 @@ namespace CoolFitnessBackend.Models
 {
     public class UserPreferences
     {
-        public required string Goal { get; set; }
-        public required string Intensity { get; set; }
+        public string Goal { get; set; } = string.Empty;
+        public string Intensity { get; set; } = string.Empty;
         public int Duration { get; set; }
     }
 }

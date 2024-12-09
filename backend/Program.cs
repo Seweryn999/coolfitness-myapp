@@ -3,11 +3,21 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using CoolFitnessBackend.Services;
-using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Dodanie usług do kontenera
+<<<<<<< HEAD
+// Wymuszenie uruchomienia na https
+builder.WebHost.UseUrls("https://localhost:5000");  // Ustawienie protokołu https
+=======
+// Ustawienie portu, na którym działa aplikacja
+builder.WebHost.UseUrls("https://localhost:5000");
+>>>>>>> 5b60409c81290a28b940a6dc6b5ad12252dc7bc5
+
+// Dodanie kontrolerów do serwera
+builder.Services.AddControllers();
+
+// Dodanie Swaggera (dokumentacja API)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -19,26 +29,18 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// Rejestracja PlanGenerator jako singleton
-builder.Services.AddSingleton<PlanGenerator>(provider =>
-{
-    var env = provider.GetRequiredService<IHostEnvironment>();
-    var jsonFilePath = Path.Combine(env.ContentRootPath, "exercises.json");
+// Dodanie generatora planów
+builder.Services.AddSingleton<PlanGenerator>();
 
-    // Sprawdzenie, czy plik istnieje
-    if (!File.Exists(jsonFilePath))
-    {
-        Console.WriteLine($"Plik exercises.json nie został znaleziony w ścieżce: {jsonFilePath}");
-    }
-
-    return new PlanGenerator(jsonFilePath);
-});
-
-// Dodanie polityki CORS dla frontendowych żądań
+// Konfiguracja CORS (dopuszczenie połączeń z frontendu)
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policyBuilder =>
-        policyBuilder.WithOrigins("http://localhost:5173")
+<<<<<<< HEAD
+        policyBuilder.WithOrigins("https://localhost:5173")  // Upewnij się, że frontend używa https
+=======
+        policyBuilder.WithOrigins("https://localhost:5173")
+>>>>>>> 5b60409c81290a28b940a6dc6b5ad12252dc7bc5
                      .AllowAnyHeader()
                      .AllowAnyMethod()
                      .AllowCredentials());
@@ -46,7 +48,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Włączenie Swagger UI w środowisku deweloperskim
+// Włączenie Swaggera tylko w środowisku deweloperskim
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -56,48 +58,10 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-// Włączenie obsługi CORS
-app.UseCors("AllowFrontend");
+app.UseCors("AllowFrontend"); // Włączenie polityki CORS
+app.UseAuthorization();
 
-// Dodanie endpointu głównego / (root), który będzie działał na https://localhost:5000/
-app.MapGet("/", () => "Witaj w aplikacji CoolFitness API!");
+// Mapowanie kontrolerów
+app.MapControllers();
 
-// Mapowanie endpointów API
-app.MapPost("/api/plan/generate", (UserPreferences preferences, PlanGenerator generator) =>
-{
-    // Logowanie otrzymanych danych
-    Console.WriteLine($"Otrzymane dane: {preferences.Goal}, {preferences.Intensity}, {preferences.Duration}");
-
-    // Weryfikacja danych wejściowych
-    if (string.IsNullOrEmpty(preferences.Goal) || preferences.Duration <= 0)
-    {
-        Console.WriteLine("Invalid user preferences provided.");
-        return Results.BadRequest("Invalid user preferences provided.");
-    }
-
-    // Generowanie planu treningowego
-    var plan = generator.GeneratePlan(preferences);
-    Console.WriteLine($"Wygenerowany plan: {plan.Goal}, {plan.Intensity}, {plan.Duration}");
-    return Results.Ok(plan);
-})
-.WithName("GeneratePlan")
-.WithTags("Fitness Plan");
-
-// Uruchomienie aplikacji
 app.Run();
-
-// Definicje klas dla użytkownika i planu
-public class UserPreferences
-{
-    public string Goal { get; set; } = string.Empty;      // Added default value
-    public string Intensity { get; set; } = string.Empty; // Added default value
-    public int Duration { get; set; }
-}
-
-public class FitnessPlan
-{
-    public string Goal { get; set; } = string.Empty;         // Added default value
-    public string Intensity { get; set; } = string.Empty;    // Added default value
-    public int Duration { get; set; }
-    public string PlanDetails { get; set; } = string.Empty;  // Added default value
-}
