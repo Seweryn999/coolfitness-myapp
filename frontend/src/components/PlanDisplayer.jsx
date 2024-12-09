@@ -1,89 +1,70 @@
 import React, { useEffect, useState } from "react";
+import "./styles/PlanDisplayer.css"; // Dodajemy import stylów
 
 function PlanDisplayer({ formData }) {
-  const [plan, setPlan] = useState(null); // Przechowywanie planu
-  const [loading, setLoading] = useState(false); // Status ładowania
-  const [error, setError] = useState(null); // Obsługa błędów
+  const [plans, setPlans] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // Efekt odpowiadający za pobranie planu
   useEffect(() => {
-    const fetchPlan = async () => {
-      setLoading(true);
-      setError(null); // Resetowanie błędów
-      setPlan(null); // Resetowanie poprzedniego planu
-
-      console.log("Wysyłanie danych do backendu:", formData);
-
+    const fetchPlans = async () => {
       try {
-        // Walidacja formData
-        if (!formData || Object.keys(formData).length === 0) {
-          throw new Error("Nieprawidłowe dane formularza.");
-        }
-
-        // Wysyłanie żądania do backendu
+        setLoading(true);
         const response = await fetch(
-          "http://localhost:5000/api/plan/generate", // Endpoint backendu
+          "http://localhost:5000/api/plan/generate",
           {
             method: "POST",
             headers: {
-              "Content-Type": "application/json", // Typ danych
+              "Content-Type": "application/json",
             },
-            body: JSON.stringify(formData), // Przekazanie danych w żądaniu
+            body: JSON.stringify(formData),
           }
         );
 
-        console.log("Status odpowiedzi backendu:", response.status);
-
-        // Obsługa niepowodzeń w odpowiedzi
         if (!response.ok) {
-          throw new Error(`Błąd HTTP! Status: ${response.status}`);
+          throw new Error("Failed to fetch plans.");
         }
 
-        // Parsowanie odpowiedzi
         const data = await response.json();
-        console.log("Odebrane dane z backendu:", data);
-
-        // Ustawienie odebranego planu
-        setPlan(data);
+        setPlans(data.plans);
       } catch (err) {
-        console.error("Błąd podczas pobierania planu:", err);
-        setError(err.message || "Nie udało się pobrać planu treningowego.");
+        setError(err.message);
       } finally {
-        setLoading(false); // Wyłączenie ładowania
+        setLoading(false);
       }
     };
 
-    // Wywołanie funkcji, jeśli dostępne są dane formularza
-    if (formData) {
-      fetchPlan();
-    }
+    if (formData) fetchPlans();
   }, [formData]);
 
-  // Renderowanie, gdy trwa ładowanie
-  if (loading) {
-    return <div>Ładowanie...</div>;
-  }
+  if (loading) return <div className="loading">Loading...</div>;
+  if (error) return <div className="error">Error: {error}</div>;
 
-  // Renderowanie w przypadku błędu
-  if (error) {
-    return <div>Błąd: {error}</div>;
-  }
-
-  // Renderowanie, gdy plan nie jest dostępny
-  if (!plan) {
-    return <div>Brak planu. Podaj poprawne dane formularza.</div>;
-  }
-
-  // Renderowanie odebranego planu treningowego
   return (
-    <div>
-      <h2>Twój Plan Treningowy</h2>
-      <div>
-        <h3>Cel: {plan.goal}</h3>
-        <h3>Intensywność: {plan.intensity}</h3>
-        <h3>Czas trwania: {plan.duration} minut</h3>
-        <p>{plan.planDetails}</p>
-      </div>
+    <div className="container">
+      <h2 className="welcome">
+        Welcome, <span className="username">{formData.Name}</span>! Here are
+        your workout plans:
+      </h2>
+      {plans.map((plan, index) => (
+        <div key={index} className="plan-card">
+          <h3 className="plan-title">Plan {index + 1}</h3>
+          {plan.plan.map((workout, workoutIndex) => (
+            <div key={workoutIndex} className="workout-day">
+              <h4 className="workout-title">Workout {workout.workout}</h4>
+              <ul className="exercise-list">
+                {workout.exercises.map((exercise, idx) => (
+                  <li key={idx} className="exercise-item">
+                    <span className="exercise-name">{exercise.name}:</span>{" "}
+                    {exercise.reps || exercise.duration} |{" "}
+                    <span className="exercise-sets">{exercise.sets} sets</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }

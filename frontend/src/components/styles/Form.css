@@ -1,40 +1,74 @@
-/* Form styling */
+/* Form container */
 .form-container {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  max-width: 600px; /* Compact form layout */
+  margin: 30px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 12px; /* Rounded edges for a soft feel */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
 }
 
-.form-container input {
+/* Form intro text */
+.form-intro {
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #666; /* Soft gray for less emphasis */
+}
+
+/* Form fields */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: #444; /* Darker gray for readability */
+  font-weight: normal; /* Lighter weight for a clean look */
+}
+
+input,
+select {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.form-container button {
-  width: 100%;
-  padding: 10px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.form-container button:hover {
-  background-color: #45a049;
-}
-
-.form-container p {
+  padding: 12px;
+  border: 1px solid #ddd; /* Subtle border color */
+  border-radius: 6px; /* Rounded corners */
   font-size: 16px;
+  box-sizing: border-box;
+  background-color: #fff;
 }
 
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #a8a8a8; /* Soft focus border */
+  box-shadow: 0 0 5px rgba(169, 169, 169, 0.3); /* Gentle focus effect */
+}
+
+/* Submit button */
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #4a90e2; /* Soft blue */
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #357ab7; /* Slightly darker blue on hover */
+  transform: translateY(-2px); /* Gentle hover effect */
+}
+
+/* Notifications */
 .notification {
-  color: green;
-  margin-top: 10px;
+  margin-top: 18px;
+  text-align: center;
+  color: #4a90e2; /* Soft blue for notifications */
+  font-size: 14px;
 }

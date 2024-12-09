@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { getDatabase, ref, push } from "firebase/database";
 import { initializeApp } from "firebase/app";
-import "./styles/Form.css"; 
-
+import "./styles/Form.css"; // Import stylów
 
 const firebaseConfig = {
   authDomain: "coolfitness-f1486.firebaseapp.com",
@@ -12,102 +11,53 @@ const firebaseConfig = {
   messagingSenderId: "1061755816855",
 };
 
-
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 function Form({ onSubmit }) {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    height: "",
-    weight: "",
-    age: "",
-    gymExperience: "",
-    muscleGroups: "",
+    Name: "",
+    Gender: "",
+    Goal: "",
+    Intensity: "",
+    Duration: "",
+    ExperienceLevel: "",
   });
 
   const [notification, setNotification] = useState("");
 
-  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  
   const validateFormData = (data) => {
-    if (!data.name || data.name.trim().length < 3) {
-      return "The name must contain at least 3 characters.";
-    }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-      return "Please provide a valid email address.";
-    }
-
-    if (!/^\d{9,}$/.test(data.phoneNumber)) {
-      return "Please provide a valid phone number (at least 9 digits).";
-    }
-
-    const height = parseInt(data.height, 10);
-    if (isNaN(height) || height < 150 || height > 250) {
-      return "Height must be a number between 150-250 cm.";
-    }
-
-    const weight = parseInt(data.weight, 10);
-    if (isNaN(weight) || weight < 30 || weight > 300) {
-      return "Weight must be a number between 30-300 kg.";
-    }
-
-    const age = parseInt(data.age, 10);
-    if (isNaN(age) || age < 16 || age > 100) {
-      return "Age must be a number between 16-100 years.";
-    }
-
-    const gymExperience = parseInt(data.gymExperience, 10);
-    if (isNaN(gymExperience) || gymExperience < 0 || gymExperience > 600) {
-      return "Gym experience must be a number of months between 0-600.";
-    }
-
     if (
-      !["all", "legs", "upper body"].includes(
-        data.muscleGroups.trim().toLowerCase()
-      )
+      !data.Name ||
+      !data.Gender ||
+      !data.Goal ||
+      !data.Intensity ||
+      !data.Duration ||
+      !data.ExperienceLevel
     ) {
-      return "Please provide a valid muscle group (all, legs, upper body).";
+      return "Please fill in all the fields.";
     }
-
     return null;
   };
 
-  
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    
     const validationError = validateFormData(formData);
     if (validationError) {
       setNotification(validationError);
       return;
     }
 
-  
     const entriesRef = ref(database, "Entries");
     push(entriesRef, formData)
       .then(() => {
-        setNotification("Thank you for signing up! We’ll be in touch soon.");
-        setFormData({
-          name: "",
-          email: "",
-          phoneNumber: "",
-          height: "",
-          weight: "",
-          age: "",
-          gymExperience: "",
-          muscleGroups: "",
-        });
-        onSubmit(formData); 
+        setNotification("Thank you for signing up! Here is your plan.");
+        onSubmit(formData);
       })
       .catch((error) => {
         setNotification("Something went wrong. Please try again.");
@@ -117,20 +67,84 @@ function Form({ onSubmit }) {
 
   return (
     <div className="form-container">
-      <p>Your personal trainer will create a workout plan just for you.</p>
-      <p>Please fill out the form:</p>
+      <p className="form-intro">
+        Your personal trainer will create a workout plan just for you.
+      </p>
       <form onSubmit={handleSubmit}>
-        {Object.keys(formData).map((key) => (
+        <div className="form-group">
+          <label htmlFor="Name">Name:</label>
           <input
-            key={key}
+            id="Name"
             type="text"
-            name={key}
-            placeholder={key.replace(/([A-Z])/g, " $1")}
-            value={formData[key]}
+            name="Name"
+            placeholder="Your Name"
+            value={formData.Name}
             onChange={handleChange}
           />
-        ))}
-        <button type="submit">Submit</button>
+        </div>
+        <div className="form-group">
+          <label htmlFor="Gender">Gender:</label>
+          <select
+            id="Gender"
+            name="Gender"
+            value={formData.Gender}
+            onChange={handleChange}
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="ExperienceLevel">Experience Level:</label>
+          <select
+            id="ExperienceLevel"
+            name="ExperienceLevel"
+            value={formData.ExperienceLevel}
+            onChange={handleChange}
+          >
+            <option value="">Select Level</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="Goal">Goal:</label>
+          <input
+            id="Goal"
+            type="text"
+            name="Goal"
+            placeholder="Weight loss, Muscle Gain"
+            value={formData.Goal}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Intensity">Muscle Group</label>
+          <input
+            id="Intensity"
+            type="text"
+            name="Intensity"
+            placeholder="Full body, Upper body, Legs"
+            value={formData.Intensity}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Duration">Duration (in minutes):</label>
+          <input
+            id="Duration"
+            type="number"
+            name="Duration"
+            placeholder="Duration"
+            value={formData.Duration}
+            onChange={handleChange}
+          />
+        </div>
+        <button className="submit-button" type="submit">
+          Submit
+        </button>
       </form>
       {notification && <p className="notification">{notification}</p>}
     </div>
