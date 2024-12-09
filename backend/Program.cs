@@ -57,7 +57,7 @@ app.UseCors("AllowFrontend");
 
 app.MapGet("/", () => "Welcome to the CoolFitness API!");
 
-app.MapPost("/api/plan/generate", async (UserPreferences preferences, PlanGenerator generator) =>
+app.MapPost("/api/plan/generate", async (CoolFitnessBackend.Services.UserPreferences preferences, PlanGenerator generator) =>
 {
     try
     {
@@ -79,18 +79,3 @@ app.MapPost("/api/plan/generate", async (UserPreferences preferences, PlanGenera
 .WithTags("Fitness Plan");
 
 app.Run();
-
-public class UserPreferences
-{
-    public string Goal { get; set; } = string.Empty;
-    public string Intensity { get; set; } = string.Empty;
-    public int Duration { get; set; }
-}
-
-public class FitnessPlan
-{
-    public string Goal { get; set; } = string.Empty;
-    public string Intensity { get; set; } = string.Empty;
-    public int Duration { get; set; }
-    public string PlanDetails { get; set; } = string.Empty;
-}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./styles/PlanDisplayer.css"; // Dodajemy import stylów
+import "./styles/PlanDisplayer.css";
 
 function PlanDisplayer({ formData }) {
   const [plans, setPlans] = useState([]);
@@ -26,7 +26,7 @@ function PlanDisplayer({ formData }) {
         }
 
         const data = await response.json();
-        setPlans(data.plans);
+        setPlans(data.plans || []); // Safeguard in case 'plans' is undefined
       } catch (err) {
         setError(err.message);
       } finally {
@@ -46,25 +46,42 @@ function PlanDisplayer({ formData }) {
         Welcome, <span className="username">{formData.Name}</span>! Here are
         your workout plans:
       </h2>
-      {plans.map((plan, index) => (
-        <div key={index} className="plan-card">
-          <h3 className="plan-title">Plan {index + 1}</h3>
-          {plan.plan.map((workout, workoutIndex) => (
-            <div key={workoutIndex} className="workout-day">
-              <h4 className="workout-title">Workout {workout.workout}</h4>
-              <ul className="exercise-list">
-                {workout.exercises.map((exercise, idx) => (
-                  <li key={idx} className="exercise-item">
-                    <span className="exercise-name">{exercise.name}:</span>{" "}
-                    {exercise.reps || exercise.duration} |{" "}
-                    <span className="exercise-sets">{exercise.sets} sets</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      ))}
+      {plans.length > 0 ? (
+        plans.map((plan, index) => (
+          <div key={index} className="plan-card">
+            <h3 className="plan-title">Plan {index + 1}</h3>
+            {Array.isArray(plan.plan) && plan.plan.length > 0 ? (
+              plan.plan.map((workout, workoutIndex) => (
+                <div key={workoutIndex} className="workout-day">
+                  <h4 className="workout-title">Workout {workout.workout}</h4>
+                  {Array.isArray(workout.exercises) &&
+                  workout.exercises.length > 0 ? (
+                    <ul className="exercise-list">
+                      {workout.exercises.map((exercise, idx) => (
+                        <li key={idx} className="exercise-item">
+                          <span className="exercise-name">
+                            {exercise.name}:
+                          </span>{" "}
+                          {exercise.reps || exercise.duration} |{" "}
+                          <span className="exercise-sets">
+                            {exercise.sets} sets
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>No exercises found for this workout.</p>
+                  )}
+                </div>
+              ))
+            ) : (
+              <p>No workout data available for this plan.</p>
+            )}
+          </div>
+        ))
+      ) : (
+        <p>No plans available.</p>
+      )}
     </div>
   );
 }
